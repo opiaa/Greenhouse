@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player2DContr : MonoBehaviour
 {
@@ -8,34 +9,49 @@ public class Player2DContr : MonoBehaviour
 	public float HSpeed = 2;
 	public float VSpeed = 2;
     private bool facingRight = true;
+    private Vector2 movement; 
+    private float jumping;
 
+
+    public void OnJump(InputValue input)
+    {
+    	jumping = input.Get<float>();
+    }
+
+	public void OnMove(InputValue input)
+    	{
+    		Vector2 inputVec = input.Get<Vector2>();
+    		movement = new Vector3(inputVec.x, 0, inputVec.y);
+    	}
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+
     }
 
-    private void Update()
+    public void Update()
     {
+    	
     	//Simple Left & Right movement
-        var movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0 , 0) * Time.deltaTime * HSpeed;
+        transform.position += (Vector3)movement * Time.deltaTime * HSpeed;
 
         //Simple jump
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(_rigidbody.velocity.y) < 0.01 )
+        if ((jumping == 1) && Mathf.Abs(_rigidbody.velocity.y) < 0.0001)
         {
         	_rigidbody.AddForce(new Vector2 (0, VSpeed), ForceMode2D.Impulse);
+        	jumping=0;
         }
 
         //Change the direction of the sprite depending on the velocity
         Vector3 sprScale = transform.localScale;
-        if (movement < 0 && facingRight)
+        if (movement.x < 0 && facingRight)
         {
         	facingRight = false;
         	sprScale.x *= -1;
         	transform.localScale = sprScale;
         } 
-        else if (movement > 0 && !facingRight)
+        else if (movement.x > 0 && !facingRight)
         {
         	facingRight = true;
         	sprScale.x *=-1;
