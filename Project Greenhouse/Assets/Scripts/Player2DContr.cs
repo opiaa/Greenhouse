@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 public class Player2DContr : MonoBehaviour
 {
 	private Rigidbody2D _rigidbody;
+    private Collider2D colliders;
 	public float HSpeed = 6;
 	public float MaxSpeed = 6;
 	public float VSpeed = 6;
     private bool facingRight = true;
     private float jumping;
     private Vector2 movement; 
+    private SpriteRenderer sprRender;
 
     public void OnJump(InputValue input)
     {
@@ -27,6 +29,7 @@ public class Player2DContr : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        sprRender = GetComponent<SpriteRenderer>();
 
     }
 
@@ -54,21 +57,20 @@ public class Player2DContr : MonoBehaviour
 
 
         //Change the direction of the sprite depending on the velocity
-        Vector3 sprScale = transform.localScale;
         if (movement.x < 0 && facingRight)
         {
         	facingRight = false;
-        	sprScale.x *= -1;
-        	transform.localScale = sprScale;
+        	sprRender.flipX=true;
         } 
         else if (movement.x > 0 && !facingRight)
         {
         	facingRight = true;
-        	sprScale.x *=-1;
-        	transform.localScale = sprScale;
+        	sprRender.flipX=false;
+
         }
 
         //Always orient upwards (likely temporary until someone smarter than me makes a better solution)
         transform.localRotation = Quaternion.Euler(0,0,0);
+
     }
 }
