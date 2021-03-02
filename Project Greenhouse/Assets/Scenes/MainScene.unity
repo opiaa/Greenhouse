@@ -131,13 +131,13 @@ GameObject:
   m_Component:
   - component: {fileID: 285851025}
   - component: {fileID: 285851024}
+  - component: {fileID: 285851029}
+  - component: {fileID: 285851026}
   - component: {fileID: 285851027}
   - component: {fileID: 285851028}
-  - component: {fileID: 285851026}
-  - component: {fileID: 285851029}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerHumanoid
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dd003a73d9ec8324d83d013edf7d4878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285851023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.526, y: -1.959, z: -0.71744657}
+  m_LocalPosition: {x: -6.526, y: -1.92, z: -0.71744657}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -244,10 +244,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
-  m_LinearDrag: 0
-  m_AngularDrag: 100
-  m_GravityScale: 1.5
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.5
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -265,8 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b64ac6dadf2b74b9b367b47fddec45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HSpeed: 4
-  VSpeed: 10
+  HSpeed: 3
+  MaxSpeed: 6
+  VSpeed: 5
 --- !u!114 &285851029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,13 +372,13 @@ GameObject:
   m_Component:
   - component: {fileID: 852942373}
   - component: {fileID: 852942372}
+  - component: {fileID: 852942376}
   - component: {fileID: 852942374}
   - component: {fileID: 852942375}
-  - component: {fileID: 852942376}
   - component: {fileID: 852942377}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerPet
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,7 +421,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e6cf77ced22ab834fa073885f2006538, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -484,10 +485,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
-  m_LinearDrag: 0
-  m_AngularDrag: 100
-  m_GravityScale: 1.5
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.5
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -536,8 +537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b64ac6dadf2b74b9b367b47fddec45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HSpeed: 4
-  VSpeed: 10
+  HSpeed: 3
+  MaxSpeed: 6
+  VSpeed: 5
 --- !u!1 &1129823898
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +666,7 @@ GameObject:
   - component: {fileID: 1997414695}
   m_Layer: 0
   m_Name: TempPlatform
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
