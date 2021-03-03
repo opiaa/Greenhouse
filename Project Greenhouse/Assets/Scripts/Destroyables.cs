@@ -8,10 +8,12 @@ public class Destroyables : MonoBehaviour
 	public SpriteRenderer sprRender;
     public bool Destroyed = false;
     public bool Hovered = false;
+    private bool hoveredP1 = false;
+    private bool hoveredP2 = false;
     private Vector2 pos;
     private Shader unitSh;
     private Shader outlineSh;
-
+    
     public void SetDestroyed(bool isDestroyed)
     {
             animator.SetBool("Destroyed", isDestroyed);
@@ -29,22 +31,30 @@ public class Destroyables : MonoBehaviour
     void Update()
     {
         transform.position = pos;
-    }
 
-    public void SetHover(bool isHovered, int playerID)
-    {
-        if (isHovered && Destroyed && playerID==1)
+        if (hoveredP1 && Destroyed)
         {
             sprRender.material.shader = outlineSh;
-
         }
-        else if (isHovered && !Destroyed && playerID==2)
+        else if (hoveredP2 && !Destroyed)
         {
-            sprRender.material.shader = outlineSh;        
+            sprRender.material.shader = outlineSh;
         }
         else
         {
             sprRender.material.shader = unitSh;
+        }
+    }
+
+    public void SetHover(bool isHovered, int playerID)
+    {
+        if (playerID==1)
+        {
+            hoveredP1=isHovered;
+        }
+        else if (playerID==2)
+        {
+            hoveredP2=isHovered;
         }
     }
 }
