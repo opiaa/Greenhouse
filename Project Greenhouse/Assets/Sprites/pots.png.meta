@@ -1,7 +1,13 @@
 fileFormatVersion: 2
-guid: 5396dc9b1119cff4ba0e9209719d0e26
+guid: b2fd2ad6e1ffdb844bf4e0772b73e37c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1580415670396618665
+    second: pots_0
+  - first:
+      213: 7032293847001776009
+    second: pots_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,16 +46,16 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
-  spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.5, y: 0.2}
+  spriteMode: 2
+  spriteExtrude: 3
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -85,7 +91,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: pots_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 316
+        width: 160
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a78377cda3cee510800000000000000
+      internalID: 1580415670396618665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pots_1
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 269
+        width: 158
+        height: 228
+      alignment: 9
+      pivot: {x: 0.55, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fb4b2cef9b79160800000000000000
+      internalID: 7032293847001776009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

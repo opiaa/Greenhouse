@@ -5,33 +5,38 @@ using UnityEngine.InputSystem;
 
 public class P2 : MonoBehaviour
 {
-	private bool firing;
+	private Collider2D objD;
+    private bool onObjD = false;
 
-	public void OnTriggerStay2D(Collider2D col)
+	public void OnTriggerEnter2D(Collider2D col)
     {
-    	print(col.gameObject.name);
-        if (firing)
+        if (col.gameObject.layer==10)
         {
-            if (col.gameObject.layer==10)
-            {
-                col.gameObject.GetComponent<Destroyables>().SetDestroyed(true);
-                firing = false;
-            }
+            //Remember the current colliding object and make sure we know it's colliding
+            objD = col;
+            onObjD=true;
+            objD.gameObject.GetComponent<Destroyables>().SetHover(true, 2);
         }
-
-        firing=false;
     }
 
+    //As soon as we're no longer colliding with the object, set the obj to false
+    public void OnTriggerExit2D(Collider2D col)
+    {
+        onObjD = false;
+        objD.gameObject.GetComponent<Destroyables>().SetHover(false, 2);
+
+    }
+
+    //When the "fire" button is pressed & we're colliding with a valid object,
+    //set it to "destroyed=true"
     public void OnFire(InputValue input)
     {
-    	print(input.Get<float>());
         if (input.Get<float>() == 1)
         {
-            firing = true;
+            if (onObjD)
+            {
+                objD.gameObject.GetComponent<Destroyables>().SetDestroyed(true);
+            }
         } 
-        else
-        {
-            firing = false;
-        }
     }
 }

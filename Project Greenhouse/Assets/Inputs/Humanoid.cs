@@ -219,6 +219,17 @@ public class @Humanoid : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6b0590dc-dd72-41a1-b857-213bb7be8082"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""83db8229-b78f-47c9-83e3-9385403f76d0"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
