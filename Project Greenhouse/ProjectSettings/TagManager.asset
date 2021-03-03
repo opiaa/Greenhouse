@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -13,9 +14,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player1
+  - Player2
+  - Destroyables
   - 
   - 
   - 
@@ -38,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 4265548497
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
