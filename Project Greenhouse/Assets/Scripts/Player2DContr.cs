@@ -35,13 +35,15 @@ public class Player2DContr : MonoBehaviour
 
     public void Update()
     {
-    	//Simple Horizontal movement
+    	//----Simple Horizontal movement
+    	//If the velocity is less than the Max speed then add a force
     	if (_rigidbody.velocity.x < MaxSpeed && _rigidbody.velocity.x > -MaxSpeed || movement.x * _rigidbody.velocity.x < 0)
     	{
     		_rigidbody.AddForce(movement*HSpeed);
 		}
 
-		//Extra drag to stop it being so floaty
+		//----Deceleration to stop it being so floaty
+		//If there is no player input then add a force in the opposite direction of movement
 		if (movement.x==0 && _rigidbody.velocity.x != 0 && jumping == 0)
 		{
 			

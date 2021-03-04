@@ -26,7 +26,8 @@ public class P1 : MonoBehaviour
         objD.gameObject.GetComponent<Destroyables>().SetHover(false, 1);
 
     }
-    // Start is called before the first frame update
+    //When the "fire" button is pressed & we're colliding with a valid object,
+    //set it to "destroyed=false"
     public void OnFire(InputValue input)
     {
         if (input.Get<float>() == 1)
