@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameUI : MonoBehaviour
 {
 	private GameObject[] destroyables;
-	public float interp = 0.5f;
+	public float interp = 25f;
 	private float destroyed = 0f;
 	private float numOfObjects = 0f;
 	private float newVal;
@@ -29,26 +29,9 @@ public class GameUI : MonoBehaviour
 		newVal = 1-destroyed/numOfObjects;
 
 		//---Simple linear interpolation
-		//If the new value is lower than the current slider value then add a little bit to it 
-		if (newVal < slider.value)
+		if (slider.value != newVal)
 		{
-			slider.value = slider.value - (interp* Time.deltaTime);
-		}
-		//Otherwise if the new value is higher than the current slider value then subtract a little bit from it
-		else if (newVal > slider.value)
-		{
-			slider.value = slider.value + (interp * Time.deltaTime);
-		}
-
-		//If it's close enough (within 0.1) then just set it to be equal to the new value
-		//to stop it getting stuck in a loop if the values don't match perfectly
-		if (newVal - slider.value < 0.01 && newVal - slider.value > 0 )
-		{
-			slider.value = newVal;
-		} 
-		else if (slider.value - newVal < 0.01 && slider.value - newVal > 0 )
-		{
-			slider.value = newVal;
+			slider.value = slider.value + interp*(newVal-slider.value)*Time.deltaTime;
 		}
 	}
 
