@@ -50,8 +50,11 @@ public class Destroyables : MonoBehaviour
     public void SetDestroyed(bool isDestroyed)
     {
             animator.SetBool("Destroyed", isDestroyed);
-            Destroyed=isDestroyed;
-            scoreboard.GetComponent<GameUI>().updateNumDestroyed(isDestroyed);
+            if (Destroyed != isDestroyed)
+	        {
+	            Destroyed=isDestroyed;
+	            scoreboard.GetComponent<GameUI>().updateNumDestroyed(isDestroyed);
+	        }
     }
 
     //This is called when a player hovers over the obj
