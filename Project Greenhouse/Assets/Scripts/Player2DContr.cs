@@ -7,6 +7,7 @@ public class Player2DContr : MonoBehaviour
 {
 	private Rigidbody2D _rigidbody;
     private Collider2D colliders;
+    private Animator anim;
 	public float HSpeed = 6;
 	public float MaxSpeed = 6;
 	public float VSpeed = 6;
@@ -28,6 +29,10 @@ public class Player2DContr : MonoBehaviour
 
     private void Start()
     {
+    	if (GetComponent<Animator>())
+    	{
+    		anim = GetComponent<Animator>();
+    	}
         _rigidbody = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
 
@@ -48,6 +53,10 @@ public class Player2DContr : MonoBehaviour
 		{
 			
 			_rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * -1,0));
+			if (anim)
+			{
+				anim.SetBool("walking", false);
+			}
 		}
 
         //Simple jump
@@ -57,6 +66,10 @@ public class Player2DContr : MonoBehaviour
         	jumping=0;
         } 
 
+		if (anim && movement.x!=0)
+		{
+			anim.SetBool("walking", true);
+		}
 
         //Change the direction of the sprite depending on the velocity
         if (movement.x < 0 && facingRight)
