@@ -42,9 +42,13 @@ public class Player2DContr : MonoBehaviour
     {
     	//----Simple Horizontal movement
     	//If the velocity is less than the Max speed then add a force
-    	if (_rigidbody.velocity.x < MaxSpeed && _rigidbody.velocity.x > -MaxSpeed || movement.x * _rigidbody.velocity.x < 0)
+    	if (Mathf.Abs(_rigidbody.velocity.x) < MaxSpeed) //|| movement.x * _rigidbody.velocity.x < 0) <--- I have no clue why I added this here but just in case there's a bug I refuse to remove it
     	{
     		_rigidbody.AddForce(movement*HSpeed);
+    		if (anim && movement.x!=0)
+			{
+				anim.SetBool("walking", true);
+			}
 		}
 
 		//----Deceleration to stop it being so floaty
@@ -65,11 +69,6 @@ public class Player2DContr : MonoBehaviour
         	_rigidbody.AddForce(new Vector2(0f, VSpeed), ForceMode2D.Impulse);
         	jumping=0;
         } 
-
-		if (anim && movement.x!=0)
-		{
-			anim.SetBool("walking", true);
-		}
 
         //Change the direction of the sprite depending on the velocity
         if (movement.x < 0 && facingRight)

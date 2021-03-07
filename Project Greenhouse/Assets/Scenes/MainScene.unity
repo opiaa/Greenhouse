@@ -415,8 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36b531a78765944f91d6f9ad5664974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HSpeed: 3
-  MaxSpeed: 6
+  HSpeed: 4
+  MaxSpeed: 7
   VSpeed: 5
 --- !u!114 &285851029
 MonoBehaviour:
@@ -788,8 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36b531a78765944f91d6f9ad5664974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HSpeed: 3
-  MaxSpeed: 6
+  HSpeed: 4
+  MaxSpeed: 7
   VSpeed: 5
 --- !u!114 &852942378
 MonoBehaviour:

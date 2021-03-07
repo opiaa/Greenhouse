@@ -44,6 +44,9 @@ TextureImporter:
   - first:
       213: 2514068372691825294
     second: CoffeeSpr_13
+  - first:
+      213: -2674272129777573845
+    second: CoffeeSpr_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,11 +136,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 407
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,11 +157,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 384
+        y: 407
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,11 +178,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 384
+        y: 407
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,11 +199,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 312
-        y: 384
+        y: 407
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,11 +220,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 279
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,11 +241,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 256
+        y: 279
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -259,11 +262,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 256
+        y: 279
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -280,11 +283,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 312
-        y: 256
+        y: 279
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -301,11 +304,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 151
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -322,11 +325,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 128
+        y: 151
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -343,11 +346,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 128
+        y: 151
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -364,11 +367,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 312
-        y: 128
+        y: 151
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -385,11 +388,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 23
         width: 104
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 105
+      alignment: 9
+      pivot: {x: 0.45, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -406,11 +409,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 0
+        y: 23
         width: 104
-        height: 128
+        height: 105
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -418,6 +421,27 @@ TextureImporter:
       bones: []
       spriteID: e8237576dd3c3e220800000000000000
       internalID: 2514068372691825294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoffeeSpr_14
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 23
+        width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2061e7baa313ead0800000000000000
+      internalID: -2674272129777573845
       vertices: []
       indices: 
       edges: []

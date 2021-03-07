@@ -25,8 +25,8 @@ public class CoffeeMachine : MonoBehaviour
     	if (StateNum==0 && !CoffeeInstance)
 		{
 			//Make the empty coffee object and place it perfectly
-			CoffeeInstance = Instantiate(CoffeePrefab, transform.position/*+new Vector3(0.05f,0f,0f)*/, Quaternion.Euler(0,0,0));
-			//Set the animation to be Making the coffee
+			CoffeeInstance = Instantiate(CoffeePrefab, transform.position+new Vector3(0.01f,-0.01f,0f), Quaternion.Euler(0,0,0));
+			//Set the animation to be making the coffee
 			animator.SetInteger("StateNum", StateNum+1);
 		}
 		
@@ -35,6 +35,11 @@ public class CoffeeMachine : MonoBehaviour
 		{
 			//Then change the coffee's animation to be ready
 			CoffeeInstance.GetComponent<Animator>().SetInteger("StateNum", 1);
+		}
+		//If there's no coffee, then make another one
+		else if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name=="CMachineCompleteIdle" && !CoffeeInstance)
+		{
+			animator.SetInteger("StateNum", 0);
 		}
     }
 }
