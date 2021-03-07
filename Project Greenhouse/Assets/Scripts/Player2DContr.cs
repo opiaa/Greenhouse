@@ -8,6 +8,8 @@ public class Player2DContr : MonoBehaviour
 	private Rigidbody2D _rigidbody;
     private Collider2D colliders;
     private Animator anim;
+    public GameObject cam;
+	private Vector3 newCamPos;
 	public float HSpeed = 6;
 	public float MaxSpeed = 6;
 	public float VSpeed = 6;
@@ -49,17 +51,36 @@ public class Player2DContr : MonoBehaviour
 			{
 				anim.SetBool("walking", true);
 			}
-		}
+
+			//Animate the camera a little bit too for more visual feedback
+			if (cam)
+			{
+				print(name);
+				newCamPos = new Vector3(movement.x/2, cam.transform.localPosition.y, cam.transform.localPosition.z);
+				cam.transform.localPosition = cam.transform.localPosition + (newCamPos-cam.transform.localPosition)*0.1f;
+				//Basically the camera has to always be at -20 on the Z axis, so this just makes sure that it stays that way
+				cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -20);
+			}		}
 
 		//----Deceleration to stop it being so floaty
 		//If there is no player input then add a force in the opposite direction of movement
 		if (movement.x==0 && _rigidbody.velocity.x != 0 && jumping == 0)
 		{
-			
 			_rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * -1,0));
+
 			if (anim)
 			{
 				anim.SetBool("walking", false);
+			}
+
+			//Animate the camera back to 0,0,-20
+			if (cam)
+			{
+				print(name);
+				newCamPos = new Vector3(0, cam.transform.localPosition.y, cam.transform.localPosition.z);
+				cam.transform.localPosition = cam.transform.localPosition + (newCamPos-cam.transform.localPosition)*0.1f;
+				//Basically the camera has to always be at -20 on the Z axis, so this just makes sure that it stays that way
+				cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -20);
 			}
 		}
 
