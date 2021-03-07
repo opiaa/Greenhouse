@@ -14,7 +14,7 @@ public class Destroyables : MonoBehaviour
     public Shader unitSh;
     public Shader outlineSh;
 
-    void Start()
+    private void Start()
     {
         //Get this objects Animator, Renderer, the Scene's progress bar and the mentioned Shaders
         animator = GetComponent<Animator>();
@@ -24,26 +24,6 @@ public class Destroyables : MonoBehaviour
     	//outlineSh = Shader.Find("Shader Graphs/shdOutline");
         //Store the current position so that we can make it never move
         pos = transform.position;
-    }
-
-    void Update()
-    {
-        //Make it not move... ever...
-        transform.position = pos;
-
-        //Switch between shaders depending on who's hovering and the obj state
-        if (hoveredP1 && Destroyed)
-        {
-            sprRender.material.shader = outlineSh;
-        }
-        else if (hoveredP2 && !Destroyed)
-        {
-            sprRender.material.shader = outlineSh;
-        }
-        else
-        {
-            sprRender.material.shader = unitSh;
-        }
     }
     
     //This is called when a player interacts with the obj
@@ -67,6 +47,26 @@ public class Destroyables : MonoBehaviour
         else if (playerID==2)
         {
             hoveredP2=isHovered;
+        }
+    }
+
+    private void Update()
+    {
+        //Make it not move... ever...
+        transform.position = pos;
+
+        //Switch between shaders depending on who's hovering and the obj state
+        if (hoveredP1 && Destroyed)
+        {
+            sprRender.material.shader = outlineSh;
+        }
+        else if (hoveredP2 && !Destroyed)
+        {
+            sprRender.material.shader = outlineSh;
+        }
+        else
+        {
+            sprRender.material.shader = unitSh;
         }
     }
 }

@@ -5,25 +5,25 @@ using UnityEngine.InputSystem;
 
 public class P2 : MonoBehaviour
 {
-	private Collider2D objD;
-    private bool onObjD = false;
+	private Collider2D objDestroyable;
+    private bool onObjDstr = false;
 
 	public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.layer==10) //Layer 10 is the "Destroyables" layer"
         {
             //Remember the current colliding object and make sure we know it's colliding
-            objD = col;
-            onObjD=true;
-            objD.gameObject.GetComponent<Destroyables>().SetHover(true, 2);
+            objDestroyable = col;
+            onObjDstr=true;
+            objDestroyable.gameObject.GetComponent<Destroyables>().SetHover(true, 2);
         }
     }
 
     //As soon as we're no longer colliding with the object, set the obj to false
     public void OnTriggerExit2D(Collider2D col)
     {
-        onObjD = false;
-        objD.gameObject.GetComponent<Destroyables>().SetHover(false, 2);
+        onObjDstr = false;
+        objDestroyable.gameObject.GetComponent<Destroyables>().SetHover(false, 2);
 
     }
 
@@ -33,9 +33,9 @@ public class P2 : MonoBehaviour
     {
         if (input.Get<float>() == 1)
         {
-            if (onObjD)
+            if (onObjDstr)
             {
-                objD.gameObject.GetComponent<Destroyables>().SetDestroyed(true);
+                objDestroyable.gameObject.GetComponent<Destroyables>().SetDestroyed(true);
             }
         } 
     }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CoffeeMachine : MonoBehaviour
 {
-	/*This is a script that could be greatly optimised, since most of these calculations are happening 
-	every frame, which may not be necessary as there are OnStateUpdate/OnStateEnter/OnStateExist events */
+	/*This is a script that could be optimised, since most of these calculations are happening 
+	every frame, which may not be necessary as there are OnStateUpdate/OnStateEnter/OnStateExist events
+	but they have to be attached to the Animation Controller itself or something weird */
 	public GameObject CoffeePrefab;
 	private Animator animator;
 	private GameObject CoffeeInstance;
@@ -24,7 +25,7 @@ public class CoffeeMachine : MonoBehaviour
 		{
 			//Make the empty coffee object and place it perfectly
 			CoffeeInstance = Instantiate(CoffeePrefab, transform.position+new Vector3(0.01f,-0.01f,0f), Quaternion.Euler(0,0,0));
-			//Set the animation to be making the coffee
+			//Set the Coffee Machine's animation to be making the coffee
 			animator.SetInteger("StateNum", StateNum+1);
 		}
 		
