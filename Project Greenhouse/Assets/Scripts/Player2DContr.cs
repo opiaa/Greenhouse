@@ -62,7 +62,7 @@ public class Player2DContr : MonoBehaviour
 				cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -20);
 			}		}
 
-		//----Deceleration to stop it being so floaty
+		//----Deceleration to stop player movement being so floaty
 		//If there is no player input then add a force in the opposite direction of movement
 		if (movement.x==0 && _rigidbody.velocity.x != 0 && jumping == 0)
 		{

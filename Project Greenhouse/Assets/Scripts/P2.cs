@@ -10,7 +10,7 @@ public class P2 : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer==10)
+        if (col.gameObject.layer==10) //Layer 10 is the "Destroyables" layer"
         {
             //Remember the current colliding object and make sure we know it's colliding
             objD = col;

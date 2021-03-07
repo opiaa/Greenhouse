@@ -9,12 +9,10 @@ public class CoffeeMachine : MonoBehaviour
 	public GameObject CoffeePrefab;
 	private Animator animator;
 	private GameObject CoffeeInstance;
-	private float timer;
 	private int StateNum;
 
     void Start()
     {
-    	timer = Time.fixedTime;
      	animator = GetComponent<Animator>();
     }
 
