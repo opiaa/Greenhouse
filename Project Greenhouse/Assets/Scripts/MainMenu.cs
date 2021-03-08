@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 
 	public void QuitGame()
 	{
-		print("Quit game");
+		print("*quits game*");
 		Application.Quit();
 	}
 }
