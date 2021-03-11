@@ -53,7 +53,7 @@ public class Destroyables : MonoBehaviour
     private void Update()
     {
         //Make it not move... ever...
-        transform.position = pos;
+        //transform.position = pos;
 
         //Switch between shaders depending on who's hovering and the obj state
         if (hoveredP1 && Destroyed)

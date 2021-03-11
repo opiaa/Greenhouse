@@ -45,8 +45,10 @@ public class Player2DContr : MonoBehaviour
     	//If the velocity is less than the Max speed then add a force
     	if (Mathf.Abs(_rigidbody.velocity.x) < MaxSpeed) //|| movement.x * _rigidbody.velocity.x < 0) <--- I have no clue why I added this but I refuse to remove it just in case there's a bug 
     	{
-    		_rigidbody.AddForce(movement*HSpeed);
-    		if (anim && movement.x!=0)
+    		//_rigidbody.AddForce(movement*HSpeed* Time.deltaTime);
+            transform.Translate( Time.deltaTime * HSpeed * movement);
+
+            if (anim && movement.x!=0)
 			{
 				anim.SetBool("walking", true);
 			}
@@ -67,7 +69,7 @@ public class Player2DContr : MonoBehaviour
 		{
 			_rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * -1,0));
 
-			if (anim)
+            if (anim)
 			{
 				anim.SetBool("walking", false);
 			}
