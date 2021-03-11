@@ -22,8 +22,11 @@ public class P2 : MonoBehaviour
     //As soon as we're no longer colliding with the object, set the obj to false
     public void OnTriggerExit2D(Collider2D col)
     {
-        onObjDstr = false;
-        objDestroyable.gameObject.GetComponent<Destroyables>().SetHover(false, 2);
+        if (onObjDstr)
+        {
+            onObjDstr = false;
+            objDestroyable.gameObject.GetComponent<Destroyables>().SetHover(false, 2);
+        }
 
     }
 

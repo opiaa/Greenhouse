@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Destroyables
+  - Loopers
   layers:
   - Default
   - TransparentFX

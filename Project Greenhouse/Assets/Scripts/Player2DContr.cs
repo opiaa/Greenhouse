@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Player2DContr : MonoBehaviour
 {
 	private Rigidbody2D _rigidbody;
-    private Collider2D colliders;
     private Animator anim;
     public GameObject cam;
 	private Vector3 newCamPos;
