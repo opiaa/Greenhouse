@@ -28,7 +28,7 @@ public class GameUI : MonoBehaviour
 	{
 		newVal = 1-destroyed/numOfObjects;
 
-		//---Simple linear interpolation
+		//---Simple interpolation
 		if (slider.value != newVal)
 		{
 			slider.value = slider.value + interp*(newVal-slider.value)*Time.deltaTime;
