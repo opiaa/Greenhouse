@@ -13,6 +13,8 @@ public class Destroyables : MonoBehaviour
     private bool Destroyed = false;
     public Shader unitSh;
     public Shader outlineSh;
+    public int healthMax = 3;
+    public int currentHealth = 3;
 
     private void Start()
     {
@@ -27,14 +29,26 @@ public class Destroyables : MonoBehaviour
     }
     
     //This is called when a player interacts with the obj
-    public void SetDestroyed(bool isDestroyed)
+    public void DealDamage(bool isDestroying, int damageDealt = 1)
     {
-            animator.SetBool("Destroyed", isDestroyed);
-            if (Destroyed != isDestroyed)
-	        {
-	            Destroyed=isDestroyed;
-	            scoreboard.GetComponent<GameUI>().updateNumDestroyed(isDestroyed);
-	        }
+        // If case that makes sure no action is taken if the object is already "destroyed" and is being hit again, ditto for objects at max health being "healed"
+        if (!((currentHealth == 0) && isDestroying) && !((currentHealth == healthMax) && !isDestroying))
+        {
+            //Subtract or add the damage from/to the health counter
+            currentHealth += damageDealt * (isDestroying ? -1 : 1);
+            
+            //Only change the "destroyed" value if either max or 0 is reached
+            if (currentHealth == 0 || currentHealth == healthMax)
+            {
+                animator.SetBool("Destroyed", isDestroying);
+                if (Destroyed != isDestroying)
+                {
+                    Destroyed = isDestroying;
+                    scoreboard.GetComponent<GameUI>().updateNumDestroyed(isDestroying);
+                }
+            }
+        }
+
     }
 
     //This is called when a player hovers over the obj

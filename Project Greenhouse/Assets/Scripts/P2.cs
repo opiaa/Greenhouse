@@ -38,7 +38,7 @@ public class P2 : MonoBehaviour
         {
             if (onObjDstr)
             {
-                objDestroyable.gameObject.GetComponent<Destroyables>().SetDestroyed(true);
+                objDestroyable.gameObject.GetComponent<Destroyables>().DealDamage(true);
             }
         } 
     }
