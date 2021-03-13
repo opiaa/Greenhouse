@@ -39,6 +39,7 @@ public class P2 : MonoBehaviour
             if (onObjDstr)
             {
                 objDestroyable.gameObject.GetComponent<Destroyables>().DealDamage(true);
+                GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Speed);
             }
         } 
     }

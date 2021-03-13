@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+public enum PowerUp { Speed, Power }
 
 public class Player2DContr : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class Player2DContr : MonoBehaviour
     public GameObject cam;
 	private Vector3 newCamPos;
 	public float HSpeed = 6;
+    public float HSpeedDefault = 6;
 	public float MaxSpeed = 6;
 	public float VSpeed = 6;
     private bool facingRight = true;
     private float jumping;
     private Vector2 movement; 
     private SpriteRenderer sprRender;
-
+    public int speedBoostTime = 5;
 
     private void Start()
     {
@@ -95,5 +97,28 @@ public class Player2DContr : MonoBehaviour
         /*Always orient upwards (likely temporary until someone smarter than me 
         makes a better solution for characters falling over lmao)*/
         transform.localRotation = Quaternion.Euler(0,0,0);
+    }
+
+    //This function redirects (+ does any pre-launch needed) to the proper functions based on the enum value passed
+    public void ApplyPowerup(PowerUp powerUp)
+    {
+        switch (powerUp)
+        {
+            case PowerUp.Speed:
+                StartCoroutine(ApplySpeedBoost());
+                break;
+            case PowerUp.Power:
+                break;
+            default:
+                break;
+        }
+    }
+
+    //It's boostin' time -> change HSpeed, and return it to the default value set when the boost timer is done
+    IEnumerator ApplySpeedBoost()
+    {
+        HSpeed *= 5;
+        yield return new WaitForSeconds(speedBoostTime);
+        HSpeed = HSpeedDefault;
     }
 }
