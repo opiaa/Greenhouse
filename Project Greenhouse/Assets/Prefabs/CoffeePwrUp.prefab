@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5206363746898057147}
   m_Layer: 10
   m_Name: CoffeePwrUp
-  m_TagString: Untagged
+  m_TagString: Destroyables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,8 @@ MonoBehaviour:
   unitSh: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   outlineSh: {fileID: -6465566751694194690, guid: 0df80a35f88f4144fbb10a28be05f905,
     type: 3}
+  healthMax: 3
+  currentHealth: 3
 --- !u!61 &5206363746898057147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,8 +137,8 @@ BoxCollider2D:
   m_Offset: {x: -0.025878787, y: -0.012938976}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 1.28}
+    pivot: {x: 0.45, y: 0.4}
+    oldSize: {x: 1.04, y: 1.05}
     newSize: {x: 1.04, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

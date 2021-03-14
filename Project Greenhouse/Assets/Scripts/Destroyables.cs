@@ -7,8 +7,7 @@ public class Destroyables : MonoBehaviour
 	private Animator animator;
 	private SpriteRenderer sprRender;
     private GameObject scoreboard;
-    private bool hoveredP1 = false;
-    private bool hoveredP2 = false;
+    private Collider2D dCollider;
     private Vector2 pos;
     private bool Destroyed = false;
     public Shader unitSh;
@@ -21,6 +20,7 @@ public class Destroyables : MonoBehaviour
         //Get this objects Animator, Renderer, the Scene's progress bar and the mentioned Shaders
         animator = GetComponent<Animator>();
     	sprRender = GetComponent<SpriteRenderer>();
+        dCollider = GetComponent<Collider2D>();
         scoreboard = GameObject.Find("ProgressSlider");
     	//unitSh = Shader.Find("Sprites/Default");
     	//outlineSh = Shader.Find("Shader Graphs/shdOutline");
@@ -51,30 +51,16 @@ public class Destroyables : MonoBehaviour
 
     }
 
-    //This is called when a player hovers over the obj
-    public void SetHover(bool isHovered, int playerID)
-    {
-        if (playerID==1)
-        {
-            hoveredP1=isHovered;
-        }
-        else if (playerID==2)
-        {
-            hoveredP2=isHovered;
-        }
-    }
-
     private void Update()
     {
         //Make it not move... ever...
         //transform.position = pos;
-
         //Switch between shaders depending on who's hovering and the obj state
-        if (hoveredP1 && Destroyed)
+        if (dCollider.IsTouching(GameObject.Find("PlayerHumanoid").GetComponent<Collider2D>()) && Destroyed)
         {
             sprRender.material.shader = outlineSh;
         }
-        else if (hoveredP2 && !Destroyed)
+        else if (dCollider.IsTouching(GameObject.Find("PlayerPet").GetComponent<Collider2D>()) && !Destroyed)
         {
             sprRender.material.shader = outlineSh;
         }
