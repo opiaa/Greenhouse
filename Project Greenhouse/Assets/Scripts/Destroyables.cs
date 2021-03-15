@@ -12,6 +12,11 @@ public class Destroyables : MonoBehaviour
     private bool Destroyed = false;
     public Shader unitSh;
     public Shader outlineSh;
+    public GameObject hitParticles;
+    public Vector3 hitParticleOffset = new Vector3(0f,0f,0f);
+    public GameObject healthBarPrefab;
+    private GameObject healthBar;
+    public Vector3 healthBarOffset = new Vector3(0f,1f,0f);
     public int healthMax = 3;
     public int currentHealth = 3;
 
@@ -36,18 +41,30 @@ public class Destroyables : MonoBehaviour
         {
             //Subtract or add the damage from/to the health counter
             currentHealth += damageDealt * (isDestroying ? -1 : 1);
-            
+            //Spawn some particles
+            Instantiate(hitParticles, transform.position+hitParticleOffset, Quaternion.identity);
+
             //Only change the "destroyed" value if either max or 0 is reached
             if (currentHealth == 0 || currentHealth == healthMax)
             {
                 animator.SetBool("Destroyed", isDestroying);
-                if (Destroyed != isDestroying)
-                {
-                    Destroyed = isDestroying;
-                    scoreboard.GetComponent<GameUI>().updateNumDestroyed(isDestroying);
-                }
+                Destroyed = isDestroying;
+                scoreboard.GetComponent<GUISlider>().updateNumDestroyed(isDestroying);
             }
         }
+
+        //Show/change the object's health bar
+        if (healthBar)
+        {
+            healthBar.GetComponent<ObjHealthBar>().UpdateObjHealth(currentHealth, healthMax);
+        }
+        else
+        {
+            healthBar = Instantiate(healthBarPrefab, transform.position + healthBarOffset, Quaternion.identity);
+            healthBar.GetComponent<ObjHealthBar>().Start(); //Why doesn't it run the Start() function before moving to the next line?!?!?!?!?!!?
+            healthBar.GetComponent<ObjHealthBar>().UpdateObjHealth(currentHealth, healthMax);
+        }
+
 
     }
 
@@ -56,11 +73,11 @@ public class Destroyables : MonoBehaviour
         //Make it not move... ever...
         //transform.position = pos;
         //Switch between shaders depending on who's hovering and the obj state
-        if (dCollider.IsTouching(GameObject.Find("PlayerHumanoid").GetComponent<Collider2D>()) && Destroyed)
+        if (dCollider.IsTouching(GameObject.Find("PlayerHumanoid").GetComponent<Collider2D>()) && (Destroyed || healthMax-currentHealth>0))
         {
             sprRender.material.shader = outlineSh;
         }
-        else if (dCollider.IsTouching(GameObject.Find("PlayerPet").GetComponent<Collider2D>()) && !Destroyed)
+        else if (dCollider.IsTouching(GameObject.Find("PlayerPet").GetComponent<Collider2D>()) && (!Destroyed || healthMax-currentHealth<healthMax))
         {
             sprRender.material.shader = outlineSh;
         }

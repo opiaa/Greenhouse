@@ -3,7 +3,12 @@ guid: f8e92b4b8bf9030409f741525ba67c39
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - unitSh: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  - outlineSh: {fileID: -6465566751694194690, guid: 0df80a35f88f4144fbb10a28be05f905,
+      type: 3}
+  - hitParticles: {fileID: 528389041627386467, guid: 74902e9e955462f49bae4e941e2a3e9e,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

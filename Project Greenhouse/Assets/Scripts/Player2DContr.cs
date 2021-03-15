@@ -7,6 +7,7 @@ public enum PowerUp { Speed, Power }
 public class Player2DContr : MonoBehaviour
 {
 	private Rigidbody2D _rigidbody;
+    private Collider2D _collider;
     private Animator anim;
     public GameObject cam;
 	private Vector3 newCamPos;
@@ -28,6 +29,7 @@ public class Player2DContr : MonoBehaviour
         }
         _rigidbody = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
     }
 
     public void OnJump(InputValue input)
@@ -40,6 +42,15 @@ public class Player2DContr : MonoBehaviour
     		Vector2 inputVec = input.Get<Vector2>();
     		movement = new Vector3(inputVec.x, 0, inputVec.y);
     	}
+
+    //Powerups 
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.GetComponent<PowerUpper>())
+        {
+
+        }
+    }
 
     public void Update()
     {

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameUI : MonoBehaviour
+public class GUISlider : MonoBehaviour
 {
 	private GameObject[] destroyables;
 	public float interp = 25f;
 	private float destroyed = 0f;
 	private float numOfObjects = 0f;
 	private float newVal;
-	private Slider slider;
+	private Slider curSlider;
 
 	private void Start()
 	{
 		//Get the slider component on the current object
-		slider = GetComponent<Slider>();
+		curSlider = GetComponent<Slider>();
 		//Count how many destroyable objects exist in the world
 		destroyables = GameObject.FindGameObjectsWithTag("Destroyables");
 		foreach (GameObject i in destroyables)
@@ -29,9 +29,9 @@ public class GameUI : MonoBehaviour
 		newVal = 1-destroyed/numOfObjects;
 
 		//---Simple interpolation
-		if (slider.value != newVal)
+		if (curSlider.value != newVal)
 		{
-			slider.value = slider.value + interp*(newVal-slider.value)*Time.deltaTime;
+			curSlider.value = curSlider.value + interp*(newVal-curSlider.value)*Time.deltaTime;
 		}
 	}
 
