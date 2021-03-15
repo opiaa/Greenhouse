@@ -43,14 +43,6 @@ public class Player2DContr : MonoBehaviour
     		movement = new Vector3(inputVec.x, 0, inputVec.y);
     	}
 
-    //Powerups 
-    public void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.GetComponent<PowerUpper>())
-        {
-
-        }
-    }
 
     public void Update()
     {

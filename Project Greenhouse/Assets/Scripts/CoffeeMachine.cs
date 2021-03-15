@@ -10,11 +10,18 @@ public class CoffeeMachine : MonoBehaviour
 	public GameObject CoffeePrefab;
 	private Animator animator;
 	private GameObject CoffeeInstance;
-	private int StateNum;
+    private Collider2D thisCol;
+
+    private int StateNum;
+	public PowerUp powerType;
+	public enum PlayerLimit { None, Player1, Player2 };
+	public PlayerLimit playerLimit = PlayerLimit.None;
 
     void Start()
     {
      	animator = GetComponent<Animator>();
+        thisCol = GetComponent<Collider2D>();
+
     }
 
     void Update()
@@ -40,5 +47,33 @@ public class CoffeeMachine : MonoBehaviour
 		{
 			animator.SetInteger("StateNum", 0);
 		}
+    }
+    
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "CMachineCompleteIdle" && CoffeeInstance)
+        {
+            switch (playerLimit)
+            {
+                case PlayerLimit.Player1:
+                    if (col.gameObject.name == "PlayerHumanoid")
+                    {
+                        col.gameObject.GetComponent<Player2DContr>().ApplyPowerup(powerType);
+                        Destroy(CoffeeInstance);
+                    }
+                    break;
+                case PlayerLimit.Player2:
+                    if (col.gameObject.name == "PlayerPet")
+                    {
+                        col.gameObject.GetComponent<Player2DContr>().ApplyPowerup(powerType);
+                        Destroy(CoffeeInstance);
+                    }
+                    break;
+                case PlayerLimit.None:
+                    col.gameObject.GetComponent<Player2DContr>().ApplyPowerup(powerType);
+                    Destroy(CoffeeInstance);
+                    break;
+            }
+        }
     }
 }
