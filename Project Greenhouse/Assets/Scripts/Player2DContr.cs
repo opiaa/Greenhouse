@@ -111,6 +111,7 @@ public class Player2DContr : MonoBehaviour
                 StartCoroutine(ApplySpeedBoost());
                 break;
             case PowerUp.Power:
+                StartCoroutine(ApplyPowerBoost());
                 break;
             default:
                 break;
@@ -120,8 +121,16 @@ public class Player2DContr : MonoBehaviour
     //It's boostin' time -> change HSpeed, and return it to the default value set when the boost timer is done
     IEnumerator ApplySpeedBoost()
     {
-        HSpeed *= 5;
+        HSpeed *= 3;
         yield return new WaitForSeconds(speedBoostTime);
         HSpeed = HSpeedDefault;
+    }
+
+    //Stronk time, change the power variable, making the player clean/destroy things faster
+    IEnumerator ApplyPowerBoost()
+    {
+        GetComponent<PlayerInt>().SetPower(2);
+        yield return new WaitForSeconds(speedBoostTime);
+        GetComponent<PlayerInt>().SetPower(1);
     }
 }

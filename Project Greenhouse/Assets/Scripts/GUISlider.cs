@@ -18,15 +18,16 @@ public class GUISlider : MonoBehaviour
 		curSlider = GetComponent<Slider>();
 		//Count how many destroyable objects exist in the world
 		destroyables = GameObject.FindGameObjectsWithTag("Destroyables");
-		foreach (GameObject i in destroyables)
-		{
-			numOfObjects++;
-		}
 	}
 
 	public void Update()
 	{
-		newVal = 1-destroyed/numOfObjects;
+		numOfObjects=0;
+		foreach (GameObject i in destroyables)
+		{
+			numOfObjects++;
+		}
+		newVal = 1-(destroyed/numOfObjects);
 
 		//---Simple interpolation
 		if (curSlider.value != newVal)

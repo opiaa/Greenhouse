@@ -7,6 +7,7 @@ public class PlayerInt : MonoBehaviour
 {
 	private List<Collider2D> objD = new List<Collider2D>();
     public int PlayerNumber;
+    private int power = 1;
 
     public void OnTriggerEnter2D(Collider2D col)
     {
@@ -34,15 +35,38 @@ public class PlayerInt : MonoBehaviour
         {
             foreach (var col in objD)
             {
-                if (PlayerNumber==1)
+                if (col)
                 {
-                    col.gameObject.GetComponent<Destroyables>().DealDamage(false);
+                    if (PlayerNumber==1)
+                    {
+                        DoHit(col.gameObject, power, false);
+                    }
+                    if (PlayerNumber==2)
+                    {
+                        DoHit(col.gameObject, power, true);
+                    }
                 }
-                if (PlayerNumber==2)
+                else
                 {
-                    col.gameObject.GetComponent<Destroyables>().DealDamage(true);
+                    objD.Remove(col);
                 }
             }
+        }
+    }
+
+    //This is called when a PowerUp.Power thing is called, it simply sets this boi's "power" variable
+    public void SetPower(int newPower)
+    {
+        power = newPower;
+    }
+
+    //For each "power" then deal damage or heal the object that number of times
+    //This is ever so slighlty easier than just doing the maths in the Destroyables script
+    public void DoHit(GameObject obj, int repetitions, bool destroying)
+    {
+        for (int i = 0; i < repetitions; i++)
+        {
+            obj.GetComponent<Destroyables>().DealDamage(destroying);
         }
     }
 }

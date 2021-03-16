@@ -86,4 +86,11 @@ public class Destroyables : MonoBehaviour
             sprRender.material.shader = unitSh;
         }
     }
+
+    void OnDestroy() {
+        if (healthBar)
+        {
+            Destroy(healthBar);
+        }
+    }
 }

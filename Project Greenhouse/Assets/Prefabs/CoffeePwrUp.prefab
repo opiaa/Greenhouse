@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6035377140505031614}
   - component: {fileID: 1809960315410514988}
   - component: {fileID: 5206363746898057147}
-  - component: {fileID: 3253571480816707216}
   m_Layer: 10
   m_Name: CoffeePwrUp
   m_TagString: Destroyables
@@ -154,17 +153,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7128508, y: 1.9787295}
   m_EdgeRadius: 0
---- !u!114 &3253571480816707216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035377140505031615}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c44c5da26bed264b80288b967ed7bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerType: 0
-  playerLimit: 0
