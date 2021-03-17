@@ -43,6 +43,14 @@ public class @Pet : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""21cbdd47-d7c7-404c-ba11-2d62510513c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""8f2c289f-e123-46ec-9294-941fc1854a2e"",
@@ -247,6 +255,28 @@ public class @Pet : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06d93f50-e839-416f-86d0-19e018babca2"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54a89ec4-da24-4c38-8403-f4c922589820"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -827,6 +857,7 @@ public class @Pet : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -892,6 +923,7 @@ public class @Pet : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
@@ -900,6 +932,7 @@ public class @Pet : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -919,6 +952,9 @@ public class @Pet : IInputActionCollection, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
@@ -935,6 +971,9 @@ public class @Pet : IInputActionCollection, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -1097,6 +1136,7 @@ public class @Pet : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
     }
     public interface IUIActions

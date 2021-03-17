@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +6,20 @@ public class Destroyables : MonoBehaviour
 {
 	private Animator animator;
 	private SpriteRenderer sprRender;
+    private AudioSource _audio;
+    [Header("Audio")]
+    public AudioClip DestroySound;
+    public AudioClip RestoreSound;
     private GameObject scoreboard;
     private Collider2D dCollider;
     private Vector2 pos;
     private bool Destroyed = false;
-    public Shader unitSh;
-    public Shader outlineSh;
+    [Header("Effects")]
+    public Material unitMat;
+    public Material outlineMat;
     public GameObject hitParticles;
     public Vector3 hitParticleOffset = new Vector3(0f,0f,0f);
+    [Header("Health Bar")]
     public GameObject healthBarPrefab;
     private GameObject healthBar;
     public Vector3 healthBarOffset = new Vector3(0f,1f,0f);
@@ -23,6 +29,7 @@ public class Destroyables : MonoBehaviour
     private void Start()
     {
         //Get this objects Animator, Renderer, the Scene's progress bar and the mentioned Shaders
+        _audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     	sprRender = GetComponent<SpriteRenderer>();
         dCollider = GetComponent<Collider2D>();
@@ -50,6 +57,28 @@ public class Destroyables : MonoBehaviour
                 animator.SetBool("Destroyed", isDestroying);
                 Destroyed = isDestroying;
                 scoreboard.GetComponent<GUISlider>().updateNumDestroyed(isDestroying);
+
+                //Play the correct audio on destroy/restore if those clips and audio sources exist
+                if (_audio)
+                {
+                    switch (Destroyed)
+                    {
+                        case true:
+                        if (DestroySound) {
+                            _audio.clip=DestroySound;
+                            _audio.Play();
+                            //_audio.clip=null; 
+                            }
+                            break;
+                        case false:
+                        if (RestoreSound) {
+                            _audio.clip=RestoreSound;
+                            _audio.Play();
+                            //_audio.clip=null; 
+                            }
+                        break;
+                    }
+                }
             }
         }
 
@@ -75,15 +104,15 @@ public class Destroyables : MonoBehaviour
         //Switch between shaders depending on who's hovering and the obj state
         if (dCollider.IsTouching(GameObject.Find("PlayerHumanoid").GetComponent<Collider2D>()) && (Destroyed || healthMax-currentHealth>0))
         {
-            sprRender.material.shader = outlineSh;
+            sprRender.material = outlineMat;
         }
         else if (dCollider.IsTouching(GameObject.Find("PlayerPet").GetComponent<Collider2D>()) && (!Destroyed || healthMax-currentHealth<healthMax))
         {
-            sprRender.material.shader = outlineSh;
+            sprRender.material = outlineMat;
         }
         else
         {
-            sprRender.material.shader = unitSh;
+            sprRender.material = unitMat;
         }
     }
 
@@ -91,6 +120,15 @@ public class Destroyables : MonoBehaviour
         if (healthBar)
         {
             Destroy(healthBar);
+        }
+    }
+
+    public Material OutlineMat {
+        get {
+            return outlineMat;
+        }
+        set {
+            outlineMat = value;
         }
     }
 }

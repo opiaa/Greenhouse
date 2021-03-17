@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerInt : MonoBehaviour
 {
-	private List<Collider2D> objD = new List<Collider2D>();
+	private List<Collider2D> objD = new List<Collider2D>(); //List of destroyables
+    private List<Collider2D> objP = new List<Collider2D>(); //List of powerups
     public int PlayerNumber;
     private int power = 1;
+    public bool HoveringPowerUp { get; set; }
 
     public void OnTriggerEnter2D(Collider2D col)
     {
@@ -16,16 +18,25 @@ public class PlayerInt : MonoBehaviour
             //Remember the current colliding object and make sure we know it's colliding
             objD.Add(col);
         }
+        else if (col.gameObject.layer==11)
+        {
+            objP.Add(col);
+        }   
     }
 
     //As soon as we're no longer colliding with the object, set the obj to false
     public void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.layer==10) //Layer 10 is the "Destroyables" layer"
+        if (col.gameObject.layer==10) //Layer 10 is the "Destroyables" layer
         {
             //Remember the current colliding object and make sure we know it's colliding
             objD.Remove(col);
-        }    }
+        }    
+        else if (col.gameObject.layer==11) //Layer 11 is the "PowerUps" layer
+        {
+            objP.Remove(col);
+        }
+    }
     
     //When the "fire" button is pressed & we're colliding with a valid object,
     //set it to "destroyed=false"
@@ -49,6 +60,20 @@ public class PlayerInt : MonoBehaviour
                 else
                 {
                     objD.Remove(col);
+                }
+            }
+        }
+    }
+
+    public void OnInteract(InputValue input)
+    {
+        if (input.Get<float>() != 0) 
+        {
+            foreach (var col in objP)
+            {
+                if (col.gameObject.GetComponent<CoffeeMachine>()) 
+                {
+                    col.gameObject.GetComponent<CoffeeMachine>().SetPowerUp(gameObject);
                 }
             }
         }

@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "21cbdd47-d7c7-404c-ba11-2d62510513c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "8f2c289f-e123-46ec-9294-941fc1854a2e",
@@ -234,6 +242,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06d93f50-e839-416f-86d0-19e018babca2",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54a89ec4-da24-4c38-8403-f4c922589820",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

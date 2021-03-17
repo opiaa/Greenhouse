@@ -35,6 +35,14 @@ public class @Humanoid : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a03b3f5d-c32e-47ec-b533-300100a025f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Fire"",
                     ""type"": ""Button"",
                     ""id"": ""f8f33ef6-e7d5-4b56-86dc-17c4729904f0"",
@@ -258,6 +266,50 @@ public class @Humanoid : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a988dcf1-049f-4193-a0dc-e958d3e71c20"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b339d4ce-57f0-42c4-b6e2-24dcf6cdf2b9"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""466820cc-1aca-492a-9cf1-f99008920d33"",
+                    ""path"": ""*/{SecondaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa406527-233b-4bc1-86c8-c2aa53765267"",
+                    ""path"": ""<Touchscreen>/touch0/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -837,6 +889,7 @@ public class @Humanoid : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // UI
@@ -902,6 +955,7 @@ public class @Humanoid : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Jump;
     public struct PlayerActions
@@ -910,6 +964,7 @@ public class @Humanoid : IInputActionCollection, IDisposable
         public PlayerActions(@Humanoid wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -927,6 +982,9 @@ public class @Humanoid : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
@@ -943,6 +1001,9 @@ public class @Humanoid : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
@@ -1107,6 +1168,7 @@ public class @Humanoid : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
     }

@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "a03b3f5d-c32e-47ec-b533-300100a025f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "f8f33ef6-e7d5-4b56-86dc-17c4729904f0",
@@ -245,6 +253,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a988dcf1-049f-4193-a0dc-e958d3e71c20",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b339d4ce-57f0-42c4-b6e2-24dcf6cdf2b9",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "466820cc-1aca-492a-9cf1-f99008920d33",
+                    "path": "*/{SecondaryAction}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa406527-233b-4bc1-86c8-c2aa53765267",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -15,7 +15,10 @@ public class CoffeeMachine : MonoBehaviour
     private bool timerUp = true;
     private int StateNum;
 	public PowerUp powerType;
-
+    public Material powerUpMaterial;
+    public Material outlineMaterial;
+    public Material regularMaterial;
+    private bool coffeeReady = false;
     void Start()
     {
      	animator = GetComponent<Animator>();
@@ -25,6 +28,24 @@ public class CoffeeMachine : MonoBehaviour
 
     void Update()
     {
+        if (CoffeeInstance && CoffeeInstance.GetComponent<Animator>().GetInteger("StateNum")==1)
+        {
+            CoffeeInstance.GetComponent<Destroyables>().unitMat = powerUpMaterial;
+            CoffeeInstance.GetComponent<Destroyables>().outlineMat = powerUpMaterial;
+
+            if (CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed"))
+            {
+                CoffeeInstance.GetComponent<Destroyables>().unitMat = regularMaterial;
+                CoffeeInstance.GetComponent<Destroyables>().outlineMat = outlineMaterial;
+            }
+        }
+        else if (CoffeeInstance && CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed"))
+        {
+            CoffeeInstance.GetComponent<Destroyables>().unitMat = regularMaterial;
+            CoffeeInstance.GetComponent<Destroyables>().outlineMat = outlineMaterial;
+        }
+
+
     	StateNum = animator.GetInteger("StateNum");
 
 		
@@ -35,6 +56,7 @@ public class CoffeeMachine : MonoBehaviour
             if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name=="CMachineCompleteIdle")
             {
                 CoffeeInstance.GetComponent<Animator>().SetInteger("StateNum", 1);
+                coffeeReady=true;
             }
         }
 
@@ -49,27 +71,27 @@ public class CoffeeMachine : MonoBehaviour
 		}
 
     }
-    
-    public void OnTriggerEnter2D(Collider2D col)
-    {
-        //if the coffe is not set to be destroyed and is spinning then do the powerup
-        if (CoffeeInstance && !CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed") && CoffeeInstance.GetComponent<Animator>().GetInteger("StateNum")==1)
-        {
-            if (col.gameObject.name == "PlayerHumanoid")
-            {
-                Destroy(CoffeeInstance); //Destroy the object and set the animator state BEFORE we set the power-up
-                animator.SetInteger("StateNum", 0);
-                col.gameObject.GetComponent<Player2DContr>().ApplyPowerup(powerType);
-                col.gameObject.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Power);
-                StartCoroutine(waitTime(timeTillNextCoffee));
-            }
-        }
-    }
 
     //Wait a few seconds before being able to make another Coffee cup
     IEnumerator waitTime(int timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
         timerUp=true;
+    }
+
+    //This is called whenever a player presses the "interact" button on this object
+    public void SetPowerUp(GameObject player)
+    {
+        if (coffeeReady && 
+        !CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed") && 
+        player.GetComponent<PlayerInt>().PlayerNumber==1) 
+        {
+            coffeeReady=false;
+            Destroy(CoffeeInstance); //Destroy the object and set the animator state BEFORE we set the power-up
+            animator.SetInteger("StateNum", 0);
+            player.GetComponent<Player2DContr>().ApplyPowerup(powerType);
+            player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Power);
+            StartCoroutine(waitTime(timeTillNextCoffee));
+        }
     }
 }
