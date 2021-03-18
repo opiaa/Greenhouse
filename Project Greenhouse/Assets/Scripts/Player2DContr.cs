@@ -103,15 +103,15 @@ public class Player2DContr : MonoBehaviour
     }
 
     //This function redirects (+ does any pre-launch needed) to the proper functions based on the enum value passed
-    public void ApplyPowerup(PowerUp powerUp)
+    public void ApplyPowerup(PowerUp powerUp, float factor = 1)
     {
         switch (powerUp)
         {
             case PowerUp.Speed:
-                StartCoroutine(ApplySpeedBoost());
+                StartCoroutine(ApplySpeedBoost(factor));
                 break;
             case PowerUp.Power:
-                StartCoroutine(ApplyPowerBoost());
+                StartCoroutine(ApplyPowerBoost(factor));
                 break;
             default:
                 break;
@@ -119,17 +119,17 @@ public class Player2DContr : MonoBehaviour
     }
 
     //It's boostin' time -> change HSpeed, and return it to the default value set when the boost timer is done
-    IEnumerator ApplySpeedBoost()
+    IEnumerator ApplySpeedBoost(float factor)
     {
-        HSpeed *= 3;
+        HSpeed *= factor;
         yield return new WaitForSeconds(speedBoostTime);
         HSpeed = HSpeedDefault;
     }
 
     //Stronk time, change the power variable, making the player clean/destroy things faster
-    IEnumerator ApplyPowerBoost()
+    IEnumerator ApplyPowerBoost(float factor)
     {
-        GetComponent<PlayerInt>().SetPower(2);
+        GetComponent<PlayerInt>().SetPower((int)factor);
         yield return new WaitForSeconds(speedBoostTime);
         GetComponent<PlayerInt>().SetPower(1);
     }

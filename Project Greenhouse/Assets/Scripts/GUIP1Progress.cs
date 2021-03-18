@@ -30,8 +30,9 @@ public class GUIP1Progress : MonoBehaviour
         //This is where we'll decide when to draw which bit of the sprite
         switch (slValue)
         {
-            case 1:
+            case float n when n>= 1:
                 //Player1 wins
+                UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScreenP1");
                 break;
             case float n when n >= 0.9:
                 //Show the sprite animating and end the game

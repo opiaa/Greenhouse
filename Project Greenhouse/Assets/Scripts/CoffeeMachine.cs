@@ -90,7 +90,7 @@ public class CoffeeMachine : MonoBehaviour
             Destroy(CoffeeInstance); //Destroy the object and set the animator state BEFORE we set the power-up
             animator.SetInteger("StateNum", 0);
             player.GetComponent<Player2DContr>().ApplyPowerup(powerType);
-            player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Power);
+            player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Power,2);
             StartCoroutine(waitTime(timeTillNextCoffee));
         }
     }
