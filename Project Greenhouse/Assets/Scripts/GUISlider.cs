@@ -32,7 +32,7 @@ public class GUISlider : MonoBehaviour
 		//---Simple interpolation
 		if (curSlider.value != newVal)
 		{
-			curSlider.value = curSlider.value + interp*(newVal-curSlider.value)*Time.deltaTime;
+			curSlider.value += interp*(newVal-curSlider.value)*Time.deltaTime;
 		}
 	}
 
