@@ -4,31 +4,31 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 4373821211876452969
-    second: 0
+    second: scaryPlant_0
   - first:
       213: 3083022652480154669
-    second: 1
+    second: scaryPlant_1
   - first:
       213: 8065225326911919864
-    second: 2
+    second: scaryPlant_2
   - first:
       213: -5324951252015793996
-    second: 3
+    second: scaryPlant_3
   - first:
       213: 6961853490716897489
-    second: 4
+    second: scaryPlant_4
   - first:
       213: 8410930813060880824
-    second: 5
+    second: scaryPlant_5
   - first:
       213: 9148004225161081607
-    second: 6
+    second: scaryPlant_6
   - first:
       213: 357805612950405740
-    second: 7
+    second: scaryPlant_7
   - first:
       213: -8728505230552025374
-    second: 8
+    second: scaryPlant_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,7 +114,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 0
+      name: scaryPlant_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,7 +122,7 @@ TextureImporter:
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -135,7 +135,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1
+      name: scaryPlant_1
       rect:
         serializedVersion: 2
         x: 160
@@ -143,7 +143,7 @@ TextureImporter:
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,7 +156,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: scaryPlant_2
       rect:
         serializedVersion: 2
         x: 320
@@ -164,7 +164,7 @@ TextureImporter:
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,15 +177,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: scaryPlant_3
       rect:
         serializedVersion: 2
-        x: 480
-        y: 512
+        x: 0
+        y: 256
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,15 +198,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: scaryPlant_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 160
         y: 256
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,15 +219,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5
+      name: scaryPlant_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 320
         y: 256
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,15 +240,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6
+      name: scaryPlant_6
       rect:
         serializedVersion: 2
-        x: 320
-        y: 256
+        x: 0
+        y: 0
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,15 +261,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7
+      name: scaryPlant_7
       rect:
         serializedVersion: 2
-        x: 480
-        y: 256
+        x: 160
+        y: 0
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,15 +282,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 8
+      name: scaryPlant_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 320
         y: 0
         width: 160
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

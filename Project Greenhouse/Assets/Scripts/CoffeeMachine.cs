@@ -14,7 +14,6 @@ public class CoffeeMachine : MonoBehaviour
     public int timeTillNextCoffee = 2;
     private bool timerUp = true;
     private int StateNum;
-	public PowerUp powerType;
     public Material powerUpMaterial;
     public Material outlineMaterial;
     public Material regularMaterial;
@@ -89,7 +88,7 @@ public class CoffeeMachine : MonoBehaviour
             coffeeReady=false;
             Destroy(CoffeeInstance); //Destroy the object and set the animator state BEFORE we set the power-up
             animator.SetInteger("StateNum", 0);
-            player.GetComponent<Player2DContr>().ApplyPowerup(powerType);
+            player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Speed,2);
             player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Power,2);
             StartCoroutine(waitTime(timeTillNextCoffee));
         }
