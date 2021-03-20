@@ -58,7 +58,7 @@ public class PlayerInt : MonoBehaviour
     {
         if (input.Get<float>() == 1)
         {
-            foreach (var col in objD)
+            foreach (var col in objD.ToArray())
             {
                 if (col)
                 {
@@ -88,6 +88,9 @@ public class PlayerInt : MonoBehaviour
                 if (col.gameObject.GetComponent<CoffeeMachine>()) 
                 {
                     col.gameObject.GetComponent<CoffeeMachine>().SetPowerUp(gameObject);
+                } else if (col.gameObject.GetComponent<TreatPowerUp>())
+                {
+                    col.gameObject.GetComponent<TreatPowerUp>().SetPowerUp(gameObject);
                 }
             }
 
