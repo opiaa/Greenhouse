@@ -23,10 +23,7 @@ public class Player2DContr : MonoBehaviour
 
     private void Start()
     {
-        if (GetComponent<Animator>())
-        {
-            anim = GetComponent<Animator>();
-        }
+        anim = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
@@ -40,7 +37,7 @@ public class Player2DContr : MonoBehaviour
 	public void OnMove(InputValue input)
     	{
     		Vector2 inputVec = input.Get<Vector2>();
-    		movement = new Vector3(inputVec.x, 0, inputVec.y);
+            movement = new Vector2(inputVec.x, 0);
     	}
 
 
@@ -49,26 +46,21 @@ public class Player2DContr : MonoBehaviour
     	//----Simple Horizontal movement
     	//If the velocity is less than the Max speed then add a force
         transform.Translate( Time.deltaTime * HSpeed * movement);
-
-        if (anim && movement.x!=0)
+        if (Mathf.Abs(movement.x)>0.5)
 		{
 			anim.SetBool("walking", true);
-		}
 
-		//Animate the camera a little bit too for more visual feedback
-		newCamPos = new Vector3(movement.x/2, cam.transform.localPosition.y, cam.transform.localPosition.z);
-		cam.transform.localPosition = cam.transform.localPosition + (newCamPos-cam.transform.localPosition)*0.1f;
-		/*Basically the camera has to always be at -20 on the Z axis, so this just makes sure that it stays that way, 
-        since *0.1f multiplies the Z axis too*/
-		cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -20);
-
-		//----Change animation when stopping movement
-		if (movement.x==0 && _rigidbody.velocity.x != 0 && jumping == 0)
+            //Animate the camera a little bit too for more visual feedback
+            newCamPos = new Vector3(movement.x/2, cam.transform.localPosition.y, cam.transform.localPosition.z);
+            cam.transform.localPosition = cam.transform.localPosition + (newCamPos-cam.transform.localPosition)*0.1f;
+            /*Basically the camera has to always be at -20 on the Z axis, so this just makes sure that it stays that way, 
+            since *0.1f multiplies the Z axis too*/
+            cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -20);
+        } 
+        //----Change animation when stopping movement
+        else if	(Mathf.Abs(movement.x) <=0.5)// && Mathf.Abs(_rigidbody.velocity.x)<=0.001)
 		{
-            if (anim)
-			{
-				anim.SetBool("walking", false);
-			}
+			anim.SetBool("walking", false);
 
 			//Animate the camera back to 0,0,-20
 			newCamPos = new Vector3(0, cam.transform.localPosition.y, cam.transform.localPosition.z);
