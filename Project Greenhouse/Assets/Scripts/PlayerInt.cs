@@ -7,39 +7,53 @@ public class PlayerInt : MonoBehaviour
 {
 	private List<Collider2D> objD = new List<Collider2D>(); //List of destroyables
     private List<Collider2D> objP = new List<Collider2D>(); //List of powerups
+    private List<Collider2D> objE = new List<Collider2D>(); //List of elevators
+
     public int PlayerNumber;
     private int power = 1;
     public bool HoveringPowerUp { get; set; }
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer==10) //Layer 10 is the "Destroyables" layer"
+        switch (col.gameObject.layer)
         {
-            //Remember the current colliding object and make sure we know it's colliding
-            objD.Add(col);
+            case 10:
+                //Remember the current colliding object and make sure we know it's colliding
+                objD.Add(col);
+                break;
+            case 11:
+                objP.Add(col);
+                break;
+            case 12:
+                objE.Add(col);
+                break;
+            default:
+                break;
         }
-        else if (col.gameObject.layer==11)
-        {
-            objP.Add(col);
-        }   
     }
 
     //As soon as we're no longer colliding with the object, set the obj to false
     public void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.layer==10) //Layer 10 is the "Destroyables" layer
+
+        switch (col.gameObject.layer)
         {
-            //Remember the current colliding object and make sure we know it's colliding
-            objD.Remove(col);
-        }    
-        else if (col.gameObject.layer==11) //Layer 11 is the "PowerUps" layer
-        {
-            objP.Remove(col);
+            case 10://Layer 10 is the "Destroyables" layer
+                objD.Remove(col);
+                break;
+            case 11:
+                objP.Remove(col);
+                break;
+            case 12:
+                objE.Remove(col);
+                break;
+            default:
+                break;
         }
     }
     
     //When the "fire" button is pressed & we're colliding with a valid object,
-    //set it to "destroyed=false"
+    //trigger a hit, where we pass a bool to let the game know wether we're destroying an object or not (so it's repairing) the object
     public void OnFire(InputValue input)
     {
         if (input.Get<float>() == 1)
@@ -75,6 +89,14 @@ public class PlayerInt : MonoBehaviour
                 {
                     col.gameObject.GetComponent<CoffeeMachine>().SetPowerUp(gameObject);
                 }
+            }
+
+            if (objE.Count > 0)
+            {
+                if (objE[0].gameObject.GetComponent<Elevator>()) {
+                    objE[0].gameObject.GetComponent<Elevator>().Elevate(gameObject);
+                }
+
             }
         }
     }

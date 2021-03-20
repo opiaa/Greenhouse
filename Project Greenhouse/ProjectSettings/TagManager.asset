@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Destroyables
   - Loopers
+  - Elevators
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player2
   - Destroyables
   - PowerUps
-  - 
+  - Elevators
   - 
   - 
   - 
