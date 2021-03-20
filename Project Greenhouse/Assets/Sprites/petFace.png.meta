@@ -1,34 +1,22 @@
 fileFormatVersion: 2
-guid: eef43923b1c047c498c2c2ce1e4db54e
+guid: cab29310140603f4288407c548c26b9a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4373821211876452969
-    second: scaryPlant_0
+      213: -2172875844938105355
+    second: petFace_0
   - first:
-      213: 3083022652480154669
-    second: scaryPlant_1
+      213: 7187130513477048599
+    second: petFace_1
   - first:
-      213: 8065225326911919864
-    second: scaryPlant_2
+      213: -6911534008830633782
+    second: petFace_2
   - first:
-      213: -5324951252015793996
-    second: scaryPlant_3
+      213: -3546905525929506453
+    second: petFace_3
   - first:
-      213: 6961853490716897489
-    second: scaryPlant_4
-  - first:
-      213: 8410930813060880824
-    second: scaryPlant_5
-  - first:
-      213: 9148004225161081607
-    second: scaryPlant_6
-  - first:
-      213: 357805612950405740
-    second: scaryPlant_7
-  - first:
-      213: -8728505230552025374
-    second: scaryPlant_8
+      213: -9144051198563261726
+    second: petFace_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -69,7 +57,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -114,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scaryPlant_0
+      name: petFace_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 680
-        width: 220
-        height: 340
+        y: 720
+        width: 360
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +116,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96ae6fcf73fe2bc30800000000000000
-      internalID: 4373821211876452969
+      spriteID: 5fdff617ee468d1e0800000000000000
+      internalID: -2172875844938105355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scaryPlant_1
+      name: petFace_1
       rect:
         serializedVersion: 2
-        x: 220
-        y: 680
-        width: 220
-        height: 340
+        x: 360
+        y: 720
+        width: 360
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,41 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2cef8394c819ca20800000000000000
-      internalID: 3083022652480154669
+      spriteID: 7199b2a7f11ddb360800000000000000
+      internalID: 7187130513477048599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scaryPlant_2
-      rect:
-        serializedVersion: 2
-        x: 440
-        y: 680
-        width: 220
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f6911414bf6def60800000000000000
-      internalID: 8065225326911919864
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scaryPlant_3
+      name: petFace_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 340
-        width: 220
-        height: 340
+        y: 360
+        width: 360
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b8b3519c09f916b0800000000000000
-      internalID: -5324951252015793996
+      spriteID: ac85e96107c4510a0800000000000000
+      internalID: -6911534008830633782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scaryPlant_4
+      name: petFace_3
       rect:
         serializedVersion: 2
-        x: 220
-        y: 340
-        width: 220
-        height: 340
+        x: 360
+        y: 360
+        width: 360
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,41 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d07e744dd87d9060800000000000000
-      internalID: 6961853490716897489
+      spriteID: b690a1b673cd6cec0800000000000000
+      internalID: -3546905525929506453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scaryPlant_5
-      rect:
-        serializedVersion: 2
-        x: 440
-        y: 340
-        width: 220
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b991eee201a9b470800000000000000
-      internalID: 8410930813060880824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scaryPlant_6
+      name: petFace_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 220
-        height: 340
+        width: 360
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,50 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 703bf74ef5d34fe70800000000000000
-      internalID: 9148004225161081607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scaryPlant_7
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 0
-        width: 220
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c62cc8a2f4e27f400800000000000000
-      internalID: 357805612950405740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scaryPlant_8
-      rect:
-        serializedVersion: 2
-        x: 440
-        y: 0
-        width: 220
-        height: 340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e6bec80dbe1ed680800000000000000
-      internalID: -8728505230552025374
+      spriteID: 2e2e6a5d1edc91180800000000000000
+      internalID: -9144051198563261726
       vertices: []
       indices: 
       edges: []

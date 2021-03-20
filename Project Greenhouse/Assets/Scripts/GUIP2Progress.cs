@@ -5,20 +5,17 @@ using UnityEngine.UI;
 
 public class GUIP2Progress : MonoBehaviour
 {
-    private Slider _slider;
+    public List<Sprite> petFaceSprites;
     public Slider ratioSlider;
     private float slValue = 0;
-    private float newval;
-    private float interval = 25f;
-    public GameObject ObjImage; 
     private Image _image;
 
 
 
     void Start()
     {
-        _slider = GetComponent<Slider>();
-        _image = ObjImage.GetComponent<Image>();
+        _image = GetComponent<Image>();
+
     }
 
     // Update is called once per frame
@@ -27,31 +24,32 @@ public class GUIP2Progress : MonoBehaviour
         slValue +=(1-ratioSlider.value)/50*Time.deltaTime;
 
 
-        //This is where we'll decide when to draw which bit of the sprite
+        //This is where we'll decide when to draw which sprite
         switch (slValue)
         {
             case 1:
-                //Player1 wins
+                //Player2 wins
+                UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScreenP2");
                 break;
             case float n when n >= 0.9:
                 //Show the sprite animating and end the game
-                newval=1f;
+                _image.sprite=petFaceSprites[4];
                 break;
             case float n when n <= 0.2:
-                newval=0.16f;
+                _image.sprite=petFaceSprites[0];
                 break;
             case float n when n <= 0.4:
-                    newval=0.28f;
+                _image.sprite=petFaceSprites[1];
                 break;
             case float n when n <= 0.6:
-                newval=0.5f;
+                _image.sprite=petFaceSprites[2];
                 break;
             case float n when n <= 0.8:
-                newval=0.68f;
+                _image.sprite=petFaceSprites[3];
                 break;
         }
 
-        _slider.value += interval*(newval-_slider.value)*Time.deltaTime;
+        //_slider.value += interval*(newval-_slider.value)*Time.deltaTime;
 
     }
 }

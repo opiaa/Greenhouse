@@ -26,31 +26,13 @@ public class GUIP1Progress : MonoBehaviour
     {
         slValue +=(ratioSlider.value)/50*Time.deltaTime;
 
-        //This is where we'll decide when to draw which bit of the sprite
-        switch (slValue)
-        {
-            case float n when n>= 1:
+        //This is where we'll decide when to end the game
+            if (slValue >= 1)
+            {
                 //Player1 wins
                 UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScreenP1");
-                break;
-            case float n when n >= 0.9:
-                //Show the particles animating and end the game
-                newval=1f;
-                break;
-            case float n when n <= 0.2:
-                newval=0.15f;
-                break;
-            case float n when n <= 0.4:
-                    newval=0.26f;
-                break;
-            case float n when n <= 0.6:
-                newval=0.5f;
-                break;
-            case float n when n <= 0.8:
-                newval=0.68f;
-                break;
-        }
-        _slider.value += interval*(newval-_slider.value)*Time.deltaTime;
+            }
+        _slider.value += interval*(slValue-_slider.value)*Time.deltaTime;
 
     }
 }
