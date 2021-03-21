@@ -27,7 +27,7 @@ public class GUIP2Progress : MonoBehaviour
         //This is where we'll decide when to draw which sprite
         switch (slValue)
         {
-            case 1:
+            case float n when n >=1:
                 //Player2 wins
                 UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScreenP2");
                 break;

@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Elevator : MonoBehaviour
 {
 
+    public List<Material> materials;
+    private SpriteRenderer _spr;
+
     // Use this for initialization
     void Start()
-    {
-
+    {  
+        _spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,10 @@ public class Elevator : MonoBehaviour
             player.transform.position = new Vector3(gameObject.transform.position.x, -1.22f, player.transform.position.z);
 
         }
-
     }
+    public void SetMaterial(int matNum)
+        {
+            
+             _spr.material=materials[matNum];
+        }
 }

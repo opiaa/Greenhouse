@@ -26,6 +26,7 @@ public class PlayerInt : MonoBehaviour
                 break;
             case 12:
                 objE.Add(col);
+                col.gameObject.GetComponent<Elevator>().SetMaterial(1);
                 break;
             default:
                 break;
@@ -46,6 +47,7 @@ public class PlayerInt : MonoBehaviour
                 break;
             case 12:
                 objE.Remove(col);
+                col.gameObject.GetComponent<Elevator>().SetMaterial(0);
                 break;
             default:
                 break;
