@@ -11,6 +11,15 @@ public class MainMenu : MonoBehaviour
 	public Animator transition;
 	public GameObject HowToStarDuster;
 	private float transitionTime=1f;
+	public Slider VolSliderObj;
+
+	private void Start() {
+		//Set the volume bar equal to the volume
+		float audioLevel;
+        audioMaster.GetFloat("MusicVol", out audioLevel);
+        audioLevel = Mathf.Pow(10, audioLevel/20);
+        VolSliderObj.value=audioLevel;	
+	}
 
 
 	public void SetHowTo(bool setHowTo)

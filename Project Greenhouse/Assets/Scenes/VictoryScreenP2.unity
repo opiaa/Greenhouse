@@ -905,7 +905,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639660424}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1147,6 +1147,7 @@ MonoBehaviour:
   audioMaster: {fileID: 24100000, guid: 2674be20af9b6204894836b092d1fc96, type: 2}
   transition: {fileID: 1639660425}
   HowToStarDuster: {fileID: 0}
+  VolSliderObj: {fileID: 0}
 --- !u!114 &2025020878
 MonoBehaviour:
   m_ObjectHideFlags: 0

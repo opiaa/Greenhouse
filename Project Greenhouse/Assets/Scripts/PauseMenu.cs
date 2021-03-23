@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public AudioMixer audioMaster;
-    private float audioLevel;
     public Slider VolSliderObj;
     public Animator transition;
     private float transitionTime = 1f;
@@ -19,7 +18,11 @@ public class PauseMenu : MonoBehaviour
 
     void Start() 
     {
-        
+        //Set the volume bar equal to the volume
+        float audioLevel;
+        audioMaster.GetFloat("MusicVol", out audioLevel);
+        audioLevel = Mathf.Pow(10, audioLevel/20);
+        VolSliderObj.value=audioLevel;
     }
 
     void Update()

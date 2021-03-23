@@ -33,7 +33,7 @@ public class PetTreatsBag : MonoBehaviour
         //If there's no treat and we're destroyed then create a Treat Instance, otherwise delete the instance
         if (timeTilNextTreat < 1 && !TreatsInstance && _animator.GetBool("Destroyed"))
         {
-			TreatsInstance = Instantiate(TreatsPrefab, transform.position+new Vector3(-0.01f,0f,0f), Quaternion.identity);
+			TreatsInstance = Instantiate(TreatsPrefab, transform.position+new Vector3(-0.7f,-0.1f,0f), Quaternion.identity);
             timeTilNextTreat=5;
             destroyedLastFrame=false;
         } else if (TreatsInstance && !_animator.GetBool("Destroyed"))
