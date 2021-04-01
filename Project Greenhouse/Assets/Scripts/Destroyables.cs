@@ -57,10 +57,13 @@ public class Destroyables : MonoBehaviour
         if (obj == gameObject)
         {
             // If case that makes sure no action is taken if the object is already "destroyed" and is being hit again, ditto for objects at max health being "healed"
-            if (!((currentHealth == 0) && isDestroying) && !((currentHealth == healthMax) && !isDestroying))
+            if (!(currentHealth == 0 && isDestroying) 
+            && !(currentHealth == healthMax && !isDestroying))
             {
                 //Subtract or add the damage from/to the health counter
                 currentHealth += damageDealt * (isDestroying ? -1 : 1);
+                currentHealth = Mathf.Clamp(currentHealth, 0, healthMax); //Make sure that the damage being done doesn't exceed the maxHealth or go below 0
+                
                 //Spawn some particles
                 Instantiate(hitParticles, transform.position+hitParticleOffset, Quaternion.identity);
 
@@ -135,15 +138,6 @@ public class Destroyables : MonoBehaviour
         if (healthBar)
         {
             Destroy(healthBar);
-        }
-    }
-
-    public Material OutlineMat {
-        get {
-            return outlineMat;
-        }
-        set {
-            outlineMat = value;
         }
     }
 }

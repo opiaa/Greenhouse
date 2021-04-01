@@ -110,14 +110,10 @@ public class PlayerInt : MonoBehaviour
 
     public delegate void Hit(bool destroying, GameObject obj, int damage);
     public static event Hit onHit;
-    //For each "power" then deal damage or heal the object that number of times
-    //This is ever so slighlty easier than just doing the maths in the Destroyables script
-    public void DoHit(GameObject obj, int repetitions, bool destroying)
+    //Do the damage
+    public void DoHit(GameObject obj, int power, bool destroying)
     {
-        for (int i = 0; i < repetitions; i++)
-        {
-            if (onHit!=null)
-                onHit(destroying, obj, 1);
-        }
+        if (onHit!=null)
+            onHit(destroying, obj, power);
     }
 }
