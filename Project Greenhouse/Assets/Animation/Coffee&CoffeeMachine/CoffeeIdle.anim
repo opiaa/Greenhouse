@@ -26,6 +26,20 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: 864c135abe3cdbb4ea8ee7b05b4bfc40, type: 2}
+    attribute: unitMat
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: a8d5fc9c4171e7043851861c10551624, type: 2}
+    attribute: outlineMat
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -40,8 +54,24 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 0
+      attribute: 846306687
+      script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 0
+      attribute: 1267951925
+      script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: -5687165172451664980, guid: 971aa00241b2df4468022bd40413b1b9, type: 3}
+    - {fileID: 2100000, guid: 864c135abe3cdbb4ea8ee7b05b4bfc40, type: 2}
+    - {fileID: 2100000, guid: a8d5fc9c4171e7043851861c10551624, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

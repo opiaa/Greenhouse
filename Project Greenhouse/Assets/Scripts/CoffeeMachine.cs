@@ -8,15 +8,13 @@ public class CoffeeMachine : MonoBehaviour
 	every frame, which may not be necessary as there are OnStateUpdate/OnStateEnter/OnStateExist events
 	but they have to be attached to the Animation Controller itself or something weird */
 	public GameObject CoffeePrefab;
+    public Vector3 coffeeOffset =  new Vector3(0.01f,-0.01f,0f);
 	private Animator animator;
 	private GameObject CoffeeInstance;
     private Collider2D thisCol;
     public int timeTillNextCoffee = 2;
     private bool timerUp = true;
     private int StateNum;
-    public Material powerUpMaterial;
-    public Material outlineMaterial;
-    public Material regularMaterial;
     private bool coffeeReady = false;
     void Start()
     {
@@ -32,27 +30,7 @@ public class CoffeeMachine : MonoBehaviour
 
     void Update()
     {
-
-        //This is horrible, save me from this mess of GetComponent<>
-        if (CoffeeInstance && CoffeeInstance.GetComponent<Animator>().GetInteger("StateNum")==1)
-        {
-            CoffeeInstance.GetComponent<Destroyables>().unitMat = powerUpMaterial;
-            CoffeeInstance.GetComponent<Destroyables>().outlineMat = powerUpMaterial;
-
-            if (CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed"))
-            {
-                CoffeeInstance.GetComponent<Destroyables>().unitMat = regularMaterial;
-                CoffeeInstance.GetComponent<Destroyables>().outlineMat = outlineMaterial;
-            }
-        }
-        else if (CoffeeInstance && CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed"))
-        {
-            CoffeeInstance.GetComponent<Destroyables>().unitMat = regularMaterial;
-            CoffeeInstance.GetComponent<Destroyables>().outlineMat = outlineMaterial;
-        }
-
-
-    	StateNum = animator.GetInteger("StateNum");
+     	StateNum = animator.GetInteger("StateNum");
 
 		
 		//If the current animation clip is CMAchineCompleteIdle and the CoffeeInstance exists then do stuff
@@ -72,7 +50,7 @@ public class CoffeeMachine : MonoBehaviour
 			//Make the empty coffee object and place it perfectly
             animator.Play("CMachineIdle");
             timerUp=false;
-			CoffeeInstance = Instantiate(CoffeePrefab, transform.position+new Vector3(0.01f,-0.01f,0f), Quaternion.identity);
+			CoffeeInstance = Instantiate(CoffeePrefab, transform.position+coffeeOffset, Quaternion.identity);
 			animator.SetInteger("StateNum", StateNum+1);
 		}
 
