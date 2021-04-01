@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class TreatPowerUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void SetPowerUp(GameObject player)
+
+    void Start()
     {
-        //And we're here!
-        if (player.GetComponent<PlayerInt>().PlayerNumber==2) 
+        PlayerInt.onInteraction += SetPowerUp;
+    }
+    void OnDisable()
+    {
+        PlayerInt.onInteraction -= SetPowerUp;
+
+    }
+    public delegate void ApplyPlayerPowerUps(GameObject player, PowerUp powerType, float factor);
+    public static event ApplyPlayerPowerUps ApplyPowerUps;
+    public void SetPowerUp(GameObject player, GameObject interactionObj)
+    {
+        if (interactionObj == gameObject)
         {
-            Destroy(gameObject); //Destroy the object and set the animator state BEFORE we set the power-up
-            player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Speed,2);
-            player.GetComponent<Player2DContr>().ApplyPowerup(PowerUp.Power,2);
+            if (player.GetComponent<PlayerInt>().PlayerNumber==2) 
+            {
+                if (ApplyPowerUps!=null)
+                {
+                    Destroy(gameObject); //Destroy the object and set the animator state BEFORE we set the power-up
+                    ApplyPowerUps(player, PowerUp.Speed,2);
+                    ApplyPowerUps(player, PowerUp.Power,2);
+                }
+            }
         }
     }
 }

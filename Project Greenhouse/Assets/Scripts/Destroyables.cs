@@ -38,49 +38,64 @@ public class Destroyables : MonoBehaviour
     	//outlineSh = Shader.Find("Shader Graphs/shdOutline");
         //Store the current position so that we can make it never move
         pos = transform.position;
+
+        //Subscribe to the onHit event
+        PlayerInt.onHit += DealDamage;
     }
     
-    //This is called when a player interacts with the obj
-    public void DealDamage(bool isDestroying, int damageDealt = 1)
+    private void OnDisable()
     {
-        // If case that makes sure no action is taken if the object is already "destroyed" and is being hit again, ditto for objects at max health being "healed"
-        if (!((currentHealth == 0) && isDestroying) && !((currentHealth == healthMax) && !isDestroying))
+        PlayerInt.onHit-= DealDamage;
+    }
+
+    //Set up an event to notify the GUI when an object has been destroyed
+    public delegate void onDestroy(GameObject objectDestroyed, bool Destroyed);
+    public static event onDestroy onDestroyed;
+    //This is called when a player interacts with the obj
+    public void DealDamage(bool isDestroying, GameObject obj, int damageDealt = 1)
+    {
+        if (obj == gameObject)
         {
-            //Subtract or add the damage from/to the health counter
-            currentHealth += damageDealt * (isDestroying ? -1 : 1);
-            //Spawn some particles
-            Instantiate(hitParticles, transform.position+hitParticleOffset, Quaternion.identity);
-
-            //Only change the "destroyed" value if either max or 0 is reached
-            if (currentHealth == 0 || currentHealth == healthMax)
+            // If case that makes sure no action is taken if the object is already "destroyed" and is being hit again, ditto for objects at max health being "healed"
+            if (!((currentHealth == 0) && isDestroying) && !((currentHealth == healthMax) && !isDestroying))
             {
-                animator.SetBool("Destroyed", isDestroying);
-                Destroyed = isDestroying;
-                scoreboard.GetComponent<GUISlider>().updateNumDestroyed(isDestroying);
+                //Subtract or add the damage from/to the health counter
+                currentHealth += damageDealt * (isDestroying ? -1 : 1);
+                //Spawn some particles
+                Instantiate(hitParticles, transform.position+hitParticleOffset, Quaternion.identity);
 
-                //Play the correct audio on destroy/restore if those clips and audio sources exist
-                if (_audio)
+                //Only change the "destroyed" value if either max or 0 is reached
+                if (currentHealth == 0 || currentHealth == healthMax)
                 {
-                    switch (Destroyed)
+                    animator.SetBool("Destroyed", isDestroying);
+                    Destroyed = isDestroying;
+                    if (onDestroyed!=null)
                     {
-                        case true:
-                        if (DestroySound) {
-                            _audio.clip=DestroySound;
-                            _audio.Play();
-                            //_audio.clip=null; 
-                            }
+                        onDestroyed(gameObject, Destroyed);
+                    }
+                    //Play the correct audio on destroy/restore if those clips and audio sources exist
+                    if (_audio)
+                    {
+                        switch (Destroyed)
+                        {
+                            case true:
+                            if (DestroySound) {
+                                _audio.clip=DestroySound;
+                                _audio.Play();
+                                //_audio.clip=null; 
+                                }
+                                break;
+                            case false:
+                            if (RestoreSound) {
+                                _audio.clip=RestoreSound;
+                                _audio.Play();
+                                //_audio.clip=null; 
+                                }
                             break;
-                        case false:
-                        if (RestoreSound) {
-                            _audio.clip=RestoreSound;
-                            _audio.Play();
-                            //_audio.clip=null; 
-                            }
-                        break;
+                        }
                     }
                 }
             }
-        }
 
         //Show/change the object's health bar
         if (healthBar)
@@ -93,7 +108,7 @@ public class Destroyables : MonoBehaviour
             healthBar.GetComponent<ObjHealthBar>().Start(); //Why doesn't it run the Start() function before moving to the next line?!?!?!?!?!!?
             healthBar.GetComponent<ObjHealthBar>().UpdateObjHealth(currentHealth, healthMax);
         }
-
+        }
 
     }
 

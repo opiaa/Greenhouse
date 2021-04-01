@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1244,6 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36b531a78765944f91d6f9ad5664974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNumber: 1
   cam: {fileID: 1204750280}
   HSpeed: 5
   HSpeedDefault: 6
@@ -2032,7 +2033,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457856338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.7391305}
+  m_LocalPosition: {x: 0, y: 0, z: 1.7391303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443611956}
@@ -2040,7 +2041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.00000008195639}
+  m_AnchoredPosition: {x: 0, y: 0.00000018626451}
   m_SizeDelta: {x: 3.2, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1818360608 &457856340
@@ -3350,6 +3351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36b531a78765944f91d6f9ad5664974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNumber: 2
   cam: {fileID: 1948514525}
   HSpeed: 5
   HSpeedDefault: 6
@@ -4817,7 +4819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0, y: -0.0000076293945}
   m_SizeDelta: {x: 100, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1277753578

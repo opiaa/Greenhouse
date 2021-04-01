@@ -18,6 +18,13 @@ public class GUISlider : MonoBehaviour
 		curSlider = GetComponent<Slider>();
 		//Count how many destroyable objects exist in the world
 		destroyables = GameObject.FindGameObjectsWithTag("Destroyables");
+
+		Destroyables.onDestroyed+=updateNumDestroyed;
+	}
+
+	private void OnDisable()
+	{
+		Destroyables.onDestroyed-=updateNumDestroyed;
 	}
 
 	public void Update()
@@ -36,7 +43,7 @@ public class GUISlider : MonoBehaviour
 		}
 	}
 
-	public void updateNumDestroyed(bool Destroyed)
+	public void updateNumDestroyed(GameObject obj, bool Destroyed)
 	{
 		//This is called when a "Destroyable" object is destroyed by the animal player
 		if (Destroyed)

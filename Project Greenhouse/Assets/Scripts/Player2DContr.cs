@@ -6,6 +6,7 @@ public enum PowerUp { Speed, Power }
 
 public class Player2DContr : MonoBehaviour
 {
+    public int PlayerNumber;
 	private Rigidbody2D _rigidbody;
     private Collider2D _collider;
     private Animator anim;
@@ -27,6 +28,37 @@ public class Player2DContr : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+
+        //Depending on what player it is, subscribe to their different power up events (could be cleaned up with an interface)
+        switch (PlayerNumber)
+        {
+            case 1:
+                CoffeeMachine.ApplyPowerUps+=ApplyPowerup;
+                break;
+            case 2:
+                TreatPowerUp.ApplyPowerUps+=ApplyPowerup;
+                break;
+            default:
+                Debug.LogWarning(name + " does not have it's PlayerNumber set");
+                break;
+        }
+
+    }
+
+    private void OnDisable()
+    {
+        switch (PlayerNumber)
+        {
+            case 1:
+                CoffeeMachine.ApplyPowerUps-=ApplyPowerup;
+                break;
+            case 2:
+                TreatPowerUp.ApplyPowerUps-=ApplyPowerup;
+                break;
+            default:
+                Debug.LogWarning(name + " does not have it's PlayerNumber set");
+                break;
+        }
     }
 
     public void OnJump(InputValue input)
@@ -39,6 +71,42 @@ public class Player2DContr : MonoBehaviour
     		Vector2 inputVec = input.Get<Vector2>();
             movement = new Vector2(inputVec.x, 0);
     	}
+
+    //This function redirects (+ does any pre-launch needed) to the proper functions based on the enum value passed
+
+    public void ApplyPowerup(GameObject player, PowerUp powerUp, float factor = 1)
+    {
+        if (player==gameObject)
+        {
+            switch (powerUp)
+            {
+                case PowerUp.Speed:
+                    StartCoroutine(ApplySpeedBoost(factor));
+                    break;
+                case PowerUp.Power:
+                    StartCoroutine(ApplyPowerBoost(factor));
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    //It's boostin' time -> change HSpeed, and return it to the default value set when the boost timer is done
+    IEnumerator ApplySpeedBoost(float factor)
+    {
+        HSpeed *= factor;
+        yield return new WaitForSeconds(speedBoostTime);
+        HSpeed = HSpeedDefault;
+    }
+
+    //Stronk time, change the power variable, making the player clean/destroy things faster
+    IEnumerator ApplyPowerBoost(float factor)
+    {
+        GetComponent<PlayerInt>().SetPower((int)factor);
+        yield return new WaitForSeconds(speedBoostTime);
+        GetComponent<PlayerInt>().SetPower(1);
+    }
 
 
     public void Update()
@@ -92,37 +160,5 @@ public class Player2DContr : MonoBehaviour
         /*Always orient upwards (likely temporary until someone smarter than me 
         makes a better solution for characters falling over lmao)*/
         transform.localRotation = Quaternion.Euler(0,0,0);
-    }
-
-    //This function redirects (+ does any pre-launch needed) to the proper functions based on the enum value passed
-    public void ApplyPowerup(PowerUp powerUp, float factor = 1)
-    {
-        switch (powerUp)
-        {
-            case PowerUp.Speed:
-                StartCoroutine(ApplySpeedBoost(factor));
-                break;
-            case PowerUp.Power:
-                StartCoroutine(ApplyPowerBoost(factor));
-                break;
-            default:
-                break;
-        }
-    }
-
-    //It's boostin' time -> change HSpeed, and return it to the default value set when the boost timer is done
-    IEnumerator ApplySpeedBoost(float factor)
-    {
-        HSpeed *= factor;
-        yield return new WaitForSeconds(speedBoostTime);
-        HSpeed = HSpeedDefault;
-    }
-
-    //Stronk time, change the power variable, making the player clean/destroy things faster
-    IEnumerator ApplyPowerBoost(float factor)
-    {
-        GetComponent<PlayerInt>().SetPower((int)factor);
-        yield return new WaitForSeconds(speedBoostTime);
-        GetComponent<PlayerInt>().SetPower(1);
     }
 }

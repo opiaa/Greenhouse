@@ -80,28 +80,23 @@ public class PlayerInt : MonoBehaviour
             }
         }
     }
-
+    public delegate void onInteract(GameObject player, GameObject interactedObj);
+    public static event onInteract onInteraction;
     public void OnInteract(InputValue input)
     {
-        if (input.Get<float>() != 0) 
+        if (onInteraction!=null)
         {
-            foreach (var col in objP)
+            if (input.Get<float>() != 0) 
             {
-                if (col.gameObject.GetComponent<CoffeeMachine>()) 
+                foreach (var col in objP)
                 {
-                    col.gameObject.GetComponent<CoffeeMachine>().SetPowerUp(gameObject);
-                } else if (col.gameObject.GetComponent<TreatPowerUp>())
-                {
-                    col.gameObject.GetComponent<TreatPowerUp>().SetPowerUp(gameObject);
-                }
-            }
-
-            if (objE.Count > 0)
-            {
-                if (objE[0].gameObject.GetComponent<Elevator>()) {
-                    objE[0].gameObject.GetComponent<Elevator>().Elevate(gameObject);
+                    onInteraction(gameObject, col.gameObject);
                 }
 
+                if (objE.Count > 0)
+                {
+                    onInteraction(gameObject, objE[0].gameObject);
+                }
             }
         }
     }
@@ -112,13 +107,17 @@ public class PlayerInt : MonoBehaviour
         power = newPower;
     }
 
+
+    public delegate void Hit(bool destroying, GameObject obj, int damage);
+    public static event Hit onHit;
     //For each "power" then deal damage or heal the object that number of times
     //This is ever so slighlty easier than just doing the maths in the Destroyables script
     public void DoHit(GameObject obj, int repetitions, bool destroying)
     {
         for (int i = 0; i < repetitions; i++)
         {
-            obj.GetComponent<Destroyables>().DealDamage(destroying);
+            if (onHit!=null)
+                onHit(destroying, obj, 1);
         }
     }
 }
