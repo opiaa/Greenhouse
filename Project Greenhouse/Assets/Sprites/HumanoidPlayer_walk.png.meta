@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -76,7 +76,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -88,7 +88,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,11 +103,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 470
-        width: 400
-        height: 470
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+        y: 47
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,12 +123,12 @@ TextureImporter:
       name: HumanoidPlayer_walk_1
       rect:
         serializedVersion: 2
-        x: 400
-        y: 470
-        width: 400
-        height: 470
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+        x: 40
+        y: 47
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,10 +146,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 470
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: HumanoidPlayer_walk_3
       rect:
         serializedVersion: 2
-        x: 400
+        x: 40
         y: 0
-        width: 400
-        height: 470
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
