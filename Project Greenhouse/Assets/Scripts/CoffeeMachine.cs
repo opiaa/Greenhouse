@@ -15,17 +15,16 @@ public class CoffeeMachine : MonoBehaviour
     public int timeTillNextCoffee = 2;
     private bool timerUp = true;
     private int StateNum;
-    private bool coffeeReady = false;
     void Start()
     {
      	animator = GetComponent<Animator>();
         thisCol = GetComponent<Collider2D>();
-        PlayerInt.onInteraction += SetPowerUp;
+        CoffeePwrUp.ApplyPowerUps+=CoffeeDrank;
     }
 
     void OnDisable()
     {
-        PlayerInt.onInteraction -= SetPowerUp;
+        CoffeePwrUp.ApplyPowerUps-=CoffeeDrank;
     }
 
     void Update()
@@ -37,10 +36,16 @@ public class CoffeeMachine : MonoBehaviour
         //--Needs to be before we create the coffee cup otherwise every new coffee cup will be ready instantly because the animator takes a few frames to catch up
         if (CoffeeInstance)
         {
+            if (animator.GetBool("Destroyed")==true)
+            {
+                CoffeeInstance.GetComponent<Animator>().SetBool("Destroyed", true);
+            } else
+            {
+                CoffeeInstance.GetComponent<Animator>().SetBool("Destroyed", false);
+            }
             if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name=="CMachineCompleteIdle")
             {
                 CoffeeInstance.GetComponent<Animator>().SetInteger("StateNum", 1);
-                coffeeReady=true;
             }
         }
 
@@ -63,27 +68,10 @@ public class CoffeeMachine : MonoBehaviour
         timerUp=true;
     }
 
-    public delegate void ApplyPlayerPowerUps(GameObject player, PowerUp powerType, float factor);
-    public static event ApplyPlayerPowerUps ApplyPowerUps;
-    //This is called whenever a player presses the "interact" button on this object
-    private void SetPowerUp(GameObject player, GameObject interactionObj)
+    void CoffeeDrank(GameObject player, PowerUp powerType, float factor)
     {
-        if (interactionObj==gameObject)
-        {
-            if (coffeeReady && 
-            !CoffeeInstance.GetComponent<Animator>().GetBool("Destroyed") && 
-            player.GetComponent<PlayerInt>().PlayerNumber==1) 
-            {
-                coffeeReady=false;
-                Destroy(CoffeeInstance); //Destroy the object and set the animator state BEFORE we set the power-up
-                animator.SetInteger("StateNum", 0);
-                if (ApplyPowerUps !=null)
-                {
-                    ApplyPowerUps(player, PowerUp.Power, 2);
-                    ApplyPowerUps(player, PowerUp.Speed, 2);
-                }
-                StartCoroutine(waitTime(timeTillNextCoffee));
-            }
-        }
+        timerUp=false; 
+        StartCoroutine(waitTime(timeTillNextCoffee));
+        animator.SetInteger("StateNum", 0);
     }
 }

@@ -88,15 +88,15 @@ public class PlayerInt : MonoBehaviour
         {
             if (input.Get<float>() != 0) 
             {
-                foreach (var col in objP)
+                if (objP.Count > 0)
                 {
-                    onInteraction(gameObject, col.gameObject);
+                    onInteraction(gameObject, objP[0].gameObject);
                 }
+            }
 
-                if (objE.Count > 0)
-                {
-                    onInteraction(gameObject, objE[0].gameObject);
-                }
+            if (objE.Count > 0)
+            {
+                onInteraction(gameObject, objE[0].gameObject);
             }
         }
     }

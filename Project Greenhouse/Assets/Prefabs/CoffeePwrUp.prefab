@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 6035377140505031608}
   - component: {fileID: 6035377140505031609}
   - component: {fileID: 6035377140505031614}
-  - component: {fileID: 1809960315410514988}
   - component: {fileID: 5206363746898057147}
   - component: {fileID: 5226750933698724968}
-  m_Layer: 10
+  - component: {fileID: -1473091517816141454}
+  - component: {fileID: -1883669657974658870}
+  m_Layer: 11
   m_Name: CoffeePwrUp
   m_TagString: Destroyables
   m_Icon: {fileID: 0}
@@ -105,30 +106,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1809960315410514988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035377140505031615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroySound: {fileID: 8300000, guid: b00858144ba37284eb79069a26f8ef6b, type: 3}
-  RestoreSound: {fileID: 8300000, guid: 7c1f169fbed3bab46bd48b8b8fed3731, type: 3}
-  unitMat: {fileID: 2100000, guid: 864c135abe3cdbb4ea8ee7b05b4bfc40, type: 2}
-  outlineMat: {fileID: 2100000, guid: a8d5fc9c4171e7043851861c10551624, type: 2}
-  hitParticles: {fileID: 528389041627386467, guid: 74902e9e955462f49bae4e941e2a3e9e,
-    type: 3}
-  hitParticleOffset: {x: 0, y: -0.3, z: 0}
-  healthBarPrefab: {fileID: 6704440357949491998, guid: 5160872c36290494a8edf2ea5fb52b84,
-    type: 3}
-  healthBarOffset: {x: 0, y: 0.3, z: 0}
-  healthMax: 3
-  currentHealth: 3
 --- !u!61 &5206363746898057147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,3 +229,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1473091517816141454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035377140505031615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroySound: {fileID: 0}
+  RestoreSound: {fileID: 0}
+  unitMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  outlineMat: {fileID: 2100000, guid: a8d5fc9c4171e7043851861c10551624, type: 2}
+  hitParticles: {fileID: 528389041627386467, guid: 74902e9e955462f49bae4e941e2a3e9e,
+    type: 3}
+  hitParticleOffset: {x: 0, y: 0, z: 0}
+  healthBarPrefab: {fileID: 0}
+  healthBarOffset: {x: 0, y: 1, z: 0}
+  healthMax: 0
+  currentHealth: 0
+--- !u!114 &-1883669657974658870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035377140505031615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5914fe821d60064ba9a61092d4adaba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLock: 1
+  ClipNameLock: Idle
+  _animator: {fileID: 6035377140505031614}

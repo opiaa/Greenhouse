@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3616615394595185498}
   - component: {fileID: 3616615394595185499}
   - component: {fileID: 8337124058552040501}
-  - component: {fileID: 7071385082509265705}
+  - component: {fileID: 2826473230358692116}
   m_Layer: 11
   m_Name: petFoodPowerUp
   m_TagString: Destroyables
@@ -232,7 +232,7 @@ MonoBehaviour:
   healthBarOffset: {x: 0, y: 1, z: 0}
   healthMax: 0
   currentHealth: 0
---- !u!114 &7071385082509265705
+--- !u!114 &2826473230358692116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,6 +241,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3616615394595185492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d7eb35ca4095945aad5004cff8e758, type: 3}
+  m_Script: {fileID: 11500000, guid: 2439ef5dd68ca9648a2967f03c96d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerLock: 2
+  ClipNameLock: 
+  _animator: {fileID: 0}

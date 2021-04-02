@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3775,7 +3775,8 @@ GameObject:
   - component: {fileID: 996583593}
   - component: {fileID: 996583594}
   - component: {fileID: 996583595}
-  m_Layer: 11
+  - component: {fileID: 996583596}
+  m_Layer: 10
   m_Name: CoffeeMachine
   m_TagString: Destroyables
   m_Icon: {fileID: 0}
@@ -3880,10 +3881,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoffeePrefab: {fileID: 6035377140505031615, guid: f1c641ab571ce4640a9059ba6935f037,
     type: 3}
+  coffeeOffset: {x: 0.04, y: -0.17, z: 0}
   timeTillNextCoffee: 2
-  powerUpMaterial: {fileID: 2100000, guid: 79e3274481b6ae647a31becdcb47b1b5, type: 2}
-  outlineMaterial: {fileID: 2100000, guid: a8d5fc9c4171e7043851861c10551624, type: 2}
-  regularMaterial: {fileID: 2100000, guid: 864c135abe3cdbb4ea8ee7b05b4bfc40, type: 2}
 --- !u!61 &996583595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3897,7 +3896,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.28799984}
+  m_Offset: {x: 0, y: -0.046102047}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3908,8 +3907,32 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 1.5999999}
+  m_Size: {x: 1.6, y: 2.4755774}
   m_EdgeRadius: 0
+--- !u!114 &996583596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996583590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e92b4b8bf9030409f741525ba67c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroySound: {fileID: 8300000, guid: b00858144ba37284eb79069a26f8ef6b, type: 3}
+  RestoreSound: {fileID: 8300000, guid: 7c1f169fbed3bab46bd48b8b8fed3731, type: 3}
+  unitMat: {fileID: 2100000, guid: 864c135abe3cdbb4ea8ee7b05b4bfc40, type: 2}
+  outlineMat: {fileID: 2100000, guid: a8d5fc9c4171e7043851861c10551624, type: 2}
+  hitParticles: {fileID: 528389041627386467, guid: 74902e9e955462f49bae4e941e2a3e9e,
+    type: 3}
+  hitParticleOffset: {x: 0, y: -0.3, z: 0}
+  healthBarPrefab: {fileID: 6704440357949491998, guid: 5160872c36290494a8edf2ea5fb52b84,
+    type: 3}
+  healthBarOffset: {x: 0, y: 0.3, z: 0}
+  healthMax: 3
+  currentHealth: 3
 --- !u!1 &1010014926
 GameObject:
   m_ObjectHideFlags: 0

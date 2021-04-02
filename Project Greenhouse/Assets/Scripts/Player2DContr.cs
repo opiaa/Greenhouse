@@ -30,35 +30,22 @@ public class Player2DContr : MonoBehaviour
         _collider = GetComponent<Collider2D>();
 
         //Depending on what player it is, subscribe to their different power up events (could be cleaned up with an interface)
-        switch (PlayerNumber)
+        BasicPowerUp.ApplyPowerUps+=ApplyPowerup;
+        if (PlayerNumber==1)
         {
-            case 1:
-                CoffeeMachine.ApplyPowerUps+=ApplyPowerup;
-                break;
-            case 2:
-                TreatPowerUp.ApplyPowerUps+=ApplyPowerup;
-                break;
-            default:
-                Debug.LogWarning(name + " does not have it's PlayerNumber set");
-                break;
+            CoffeePwrUp.ApplyPowerUps+=ApplyPowerup;
         }
-
     }
 
     private void OnDisable()
     {
-        switch (PlayerNumber)
+        BasicPowerUp.ApplyPowerUps-=ApplyPowerup;
+
+        if (PlayerNumber==1) 
         {
-            case 1:
-                CoffeeMachine.ApplyPowerUps-=ApplyPowerup;
-                break;
-            case 2:
-                TreatPowerUp.ApplyPowerUps-=ApplyPowerup;
-                break;
-            default:
-                Debug.LogWarning(name + " does not have it's PlayerNumber set");
-                break;
+            CoffeePwrUp.ApplyPowerUps-=ApplyPowerup;
         }
+
     }
 
     public void OnJump(InputValue input)
