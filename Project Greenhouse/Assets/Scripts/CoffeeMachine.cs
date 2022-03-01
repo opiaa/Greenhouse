@@ -19,12 +19,12 @@ public class CoffeeMachine : MonoBehaviour
     {
      	animator = GetComponent<Animator>();
         thisCol = GetComponent<Collider2D>();
-        CoffeePwrUp.ApplyPowerUps+=CoffeeDrank;
+        //CoffeePwrUp.ApplyPowerUps+=CoffeeDrank;
     }
 
     void OnDisable()
     {
-        CoffeePwrUp.ApplyPowerUps-=CoffeeDrank;
+        //CoffeePwrUp.ApplyPowerUps-=CoffeeDrank;
     }
 
     void Update()

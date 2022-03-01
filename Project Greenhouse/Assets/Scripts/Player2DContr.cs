@@ -98,10 +98,10 @@ public class Player2DContr : MonoBehaviour
 
     public void Update()
     {
-    	//----Simple Horizontal movement
-    	//If the velocity is less than the Max speed then add a force
-        transform.Translate( Time.deltaTime * HSpeed * movement);
-        if (Mathf.Abs(movement.x)>0.5)
+        //----Simple Horizontal movement
+        //If the velocity is less than the Max speed then add a force
+        transform.Translate(Time.deltaTime * HSpeed * movement);
+        if (Mathf.Abs(movement.x)>0)
 		{
 			anim.SetBool("walking", true);
 
@@ -113,7 +113,7 @@ public class Player2DContr : MonoBehaviour
             cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, cam.transform.localPosition.y, -20);
         } 
         //----Change animation when stopping movement
-        else if	(Mathf.Abs(movement.x) <=0.5)// && Mathf.Abs(_rigidbody.velocity.x)<=0.001)
+        else if	(movement.x == 0)
 		{
 			anim.SetBool("walking", false);
 
@@ -129,15 +129,15 @@ public class Player2DContr : MonoBehaviour
         {
         	_rigidbody.AddForce(new Vector2(0f, VSpeed), ForceMode2D.Impulse);
         	jumping=0;
-        } 
+        }
 
         //Change the direction of the sprite depending on the velocity
-        if (movement.x < 0 && facingRight)
+        if (movement.x < 0f && facingRight)
         {
         	facingRight = false;
         	sprRender.flipX=true;
         } 
-        else if (movement.x > 0 && !facingRight)
+        else if (movement.x > 0f && !facingRight)
         {
         	facingRight = true;
         	sprRender.flipX=false;

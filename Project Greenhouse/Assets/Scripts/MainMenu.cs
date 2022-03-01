@@ -14,11 +14,15 @@ public class MainMenu : MonoBehaviour
 	public Slider VolSliderObj;
 
 	private void Start() {
+		//Get the volume from the PlayerPrefs
+		if (PlayerPrefs.HasKey("MusicVol"))
+			audioMaster.SetFloat("MusicVol",PlayerPrefs.GetFloat("MusicVol"));
+
 		//Set the volume bar equal to the volume
-		float audioLevel;
-        audioMaster.GetFloat("MusicVol", out audioLevel);
-        audioLevel = Mathf.Pow(10, audioLevel/20);
-        VolSliderObj.value=audioLevel;	
+		float curVol;
+        audioMaster.GetFloat("MusicVol", out curVol);
+        curVol = Mathf.Pow(10, curVol/20);
+        VolSliderObj.value=curVol;	
 	}
 
 
@@ -47,7 +51,10 @@ public class MainMenu : MonoBehaviour
 
 	public void VolSlider(float sliderVal) 
 	{
-        audioMaster.SetFloat("MusicVol", Mathf.Log10(sliderVal)*20);
+		float newVol = Mathf.Log10(sliderVal) * 20;
+
+		audioMaster.SetFloat("MusicVol", newVol);
+		PlayerPrefs.SetFloat("MusicVol", newVol);
 	}
 	IEnumerator LoadLevel(string lvlName)
     {

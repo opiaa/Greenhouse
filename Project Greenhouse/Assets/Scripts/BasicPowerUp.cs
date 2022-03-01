@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class BasicPowerUp : MonoBehaviour
 {
 
@@ -17,8 +16,6 @@ public class BasicPowerUp : MonoBehaviour
     public int PlayerLock;
     public string ClipNameLock="Idle";
     public Animator _animator;
-
-
     public delegate void ApplyPlayerPowerUps(GameObject player, PowerUp powerType, float factor);
     public static event ApplyPlayerPowerUps ApplyPowerUps;
 

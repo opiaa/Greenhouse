@@ -215,7 +215,7 @@
                 {
                     "name": "",
                     "id": "ff8c3972-8c14-46a2-b857-70b9401de0a8",
-                    "path": "<Keyboard>/rightShift",
+                    "path": "<Keyboard>/comma",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -248,7 +248,7 @@
                 {
                     "name": "",
                     "id": "06d93f50-e839-416f-86d0-19e018babca2",
-                    "path": "<Keyboard>/rightCtrl",
+                    "path": "<Keyboard>/period",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

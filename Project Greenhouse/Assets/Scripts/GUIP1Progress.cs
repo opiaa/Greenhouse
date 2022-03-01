@@ -21,10 +21,9 @@ public class GUIP1Progress : MonoBehaviour
         _image = ObjImage.GetComponent<Image>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        slValue +=(ratioSlider.value)/50*Time.deltaTime;
+        slValue +=(ratioSlider.value)/75*Time.deltaTime;
 
         //This is where we'll decide when to end the game
             if (slValue >= 1)

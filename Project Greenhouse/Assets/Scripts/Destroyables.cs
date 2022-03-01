@@ -117,14 +117,14 @@ public class Destroyables : MonoBehaviour
 
     private void Update()
     {
-        //Make it not move... ever...
-        //transform.position = pos;
         //Switch between shaders depending on who's hovering and the obj state
-        if (dCollider.IsTouching(GameObject.Find("PlayerHumanoid").GetComponent<Collider2D>()) && (Destroyed || healthMax-currentHealth>0))
+        if (dCollider.IsTouching(GameObject.Find("PlayerHumanoid").GetComponent<Collider2D>()) && 
+            (Destroyed || healthMax-currentHealth>0))
         {
             sprRender.material = outlineMat;
         }
-        else if (dCollider.IsTouching(GameObject.Find("PlayerPet").GetComponent<Collider2D>()) && (!Destroyed || healthMax-currentHealth<healthMax))
+        else if (dCollider.IsTouching(GameObject.Find("PlayerPet").GetComponent<Collider2D>()) && 
+            (!Destroyed || healthMax-currentHealth<healthMax))
         {
             sprRender.material = outlineMat;
         }

@@ -21,7 +21,7 @@ public class GUIP2Progress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slValue +=(1-ratioSlider.value)/50*Time.deltaTime;
+        slValue +=(1-ratioSlider.value)/75*Time.deltaTime;
 
 
         //This is where we'll decide when to draw which sprite
